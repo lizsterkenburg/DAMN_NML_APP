@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SplashScreen</string>
+    <string name="logo">logo</string>
+    <string name="app_name_title_bar">Name</string>
+    <string name="de_age_me_now">De-Age Me Now</string>
+    <string name="AchievementsButtonDesc">TODO</string>
+    <string name="HTPButtonDesc">TODO</string>
+    <string name="HelpButtonDesc">TODO</string>
+    <string name="PracticeButtonDesc">practiceButtonDesc</string>
+    <string name="settingscontent">settingsContent</string>
+    <string name="hello_there_i_m_mr_owl_good_luck_today_hoot_hoot">Hello there, I\'m Mr. Owl. Good luck today! Hoot Hoot</string>
+    <string name="owl">owl</string>
+    <string name="bubble">TODO</string>
+    <string name="splashimage">TODO</string>
+    <string name="homescreenimage">TODO</string>
+</resources>
