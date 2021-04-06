@@ -1,6 +1,7 @@
 package com.example.splashscreen;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -8,14 +9,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
-import org.w3c.dom.Document;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+
+//import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.AnalyzeSyntaxRequest;
+import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.Document.Type;
+import com.google.cloud.language.v1.EncodingType;
 import com.google.cloud.language.v1.LanguageServiceClient;
-
+import com.google.cloud.language.v1.Token;
 
 public class PracticeActivity extends LinkingFunctions {
     ImageView speechButton;
@@ -56,7 +63,7 @@ public class PracticeActivity extends LinkingFunctions {
         boolean passive = true;
         // Instantiate the Language client com.google.cloud.language.v1.LanguageServiceClient
         try (LanguageServiceClient language = LanguageServiceClient.create()) {
-            Document doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build();
+            Document doc = Document.newBuilder().setContent(m).setType(Type.PLAIN_TEXT).build();
             AnalyzeSyntaxRequest request =
                     AnalyzeSyntaxRequest.newBuilder()
                             .setDocument(doc)
@@ -71,10 +78,13 @@ public class PracticeActivity extends LinkingFunctions {
                 System.out.printf("\tVoice: %s\n", token.getPartOfSpeech().getVoice());
 
             }
-            return response.getTokensList();
+            //return response.getTokensList();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return passive;
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void toSplash(View v){
         String inputText = speechText.getText().toString();
         if (inputText.isEmpty()) {
