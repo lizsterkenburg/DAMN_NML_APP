@@ -7,6 +7,7 @@ import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -28,6 +29,7 @@ public class PracticeActivity extends LinkingFunctions {
     ImageView speechButton;
     EditText speechText;
     DataStorer dataStorer;
+    TextView passiveActive;
     private static final int I = 1;
 
     @Override
@@ -38,6 +40,7 @@ public class PracticeActivity extends LinkingFunctions {
         speechButton = (ImageView) findViewById(R.id.button);
         speechText = (EditText)findViewById(R.id.editText);
         dataStorer = new DataStorer();
+        passiveActive = findViewById(R.id.passiveActiveText);
 
         speechButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,10 +62,11 @@ public class PracticeActivity extends LinkingFunctions {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public boolean isPassive(String m){
-        boolean passive = true;
+    public String isPassive(String m){
+        String voice = "";
         // Instantiate the Language client com.google.cloud.language.v1.LanguageServiceClient
         try (LanguageServiceClient language = LanguageServiceClient.create()) {
+
             Document doc = Document.newBuilder().setContent(m).setType(Type.PLAIN_TEXT).build();
             AnalyzeSyntaxRequest request =
                     AnalyzeSyntaxRequest.newBuilder()
@@ -72,17 +76,19 @@ public class PracticeActivity extends LinkingFunctions {
             // analyze the syntax in the given text
             AnalyzeSyntaxResponse response = language.analyzeSyntax(request);
             // print the response
+            voice = "try";
             for (Token token : response.getTokensList()) {
                 System.out.printf("\tText: %s\n", token.getText().getContent());
 
                 System.out.printf("\tVoice: %s\n", token.getPartOfSpeech().getVoice());
-
+                voice = token.getPartOfSpeech().getVoice().toString();
             }
             //return response.getTokensList();
         } catch (IOException e) {
+            voice = e.toString();
             e.printStackTrace();
         }
-        return passive;
+        return voice;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void toSplash(View v){
@@ -93,14 +99,15 @@ public class PracticeActivity extends LinkingFunctions {
         }
         else
         {
-            String result = "";
 
+            String result = isPassive(inputText);
             dataStorer.writeFile(java.time.LocalDate.now().toString(), inputText, result);
+            passiveActive.setText(result);
         }
 
-        Intent i = new Intent(this, SplashActivity.class);
-        startActivity(i);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        //Intent i = new Intent(this, SplashActivity.class);
+        //startActivity(i);
+        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
 }
