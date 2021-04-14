@@ -1,5 +1,6 @@
 package com.example.splashscreen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 //import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.AnalyzeSyntaxRequest;
@@ -31,13 +34,14 @@ public class PracticeActivity extends LinkingFunctions {
     EditText speechText;
     DataStorer dataStorer;
     TextView passiveActive;
+    Context context;
     private static final int I = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_start);
-
+        context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         speechText = (EditText)findViewById(R.id.editText);
         dataStorer = new DataStorer();
@@ -63,36 +67,9 @@ public class PracticeActivity extends LinkingFunctions {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public String isPassive(String m){
-        String voice = "";
-        // Instantiate the Language client com.google.cloud.language.v1.LanguageServiceClient
-        try (LanguageServiceClient language = LanguageServiceClient.create()) {
 
-            Document doc = Document.newBuilder().setContent(m).setType(Type.PLAIN_TEXT).build();
-            AnalyzeSyntaxRequest request =
-                    AnalyzeSyntaxRequest.newBuilder()
-                            .setDocument(doc)
-                            .setEncodingType(EncodingType.UTF16)
-                            .build();
-            // analyze the syntax in the given text
-            AnalyzeSyntaxResponse response = language.analyzeSyntax(request);
-            // print the response
-            voice = "try";
-            for (Token token : response.getTokensList()) {
-                System.out.printf("\tText: %s\n", token.getText().getContent());
-
-                System.out.printf("\tVoice: %s\n", token.getPartOfSpeech().getVoice());
-                voice = token.getPartOfSpeech().getVoice().toString();
-            }
-            //return response.getTokensList();
-        } catch (IOException e) {
-            voice = e.toString();
-            e.printStackTrace();
-        }
-        return voice;
-    }
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void toSplash(View v){
+    public void toSplash(View v) throws IOException {
         String inputText = speechText.getText().toString();
         if (inputText.isEmpty()) {
             // TODO: add popup
@@ -100,11 +77,16 @@ public class PracticeActivity extends LinkingFunctions {
         }
         else
         {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
+            DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
 
-            String result = isPassive(inputText);
-            dataStorer.writeFile(java.time.LocalDate.now().toString(), inputText, result);
-            passiveActive.setText(result);
+            String filename = "Results analysis on " + date.format(now);
+            String message = date2.format(now) + inputText;
+            dataStorer.writeFile(filename, message,context);
+            passiveActive.setText(inputText);
         }
+
 
         //Intent i = new Intent(this, SplashActivity.class);
         //startActivity(i);
