@@ -9,41 +9,36 @@
     <include
         android:id="@+id/include3"
         layout="@layout/titlebar_basic_layout"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="-278dp" />
+        android:layout_marginTop="380dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-16dp" />
+
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="128dp"
         android:hint="You will see input here"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/include3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include3" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/include3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/button"
-        android:layout_width="191dp"
-        android:layout_height="221dp"
+        android:layout_width="91dp"
+        android:layout_height="111dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="137dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginRight="83dp"
         android:background="@drawable/mic"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/include3"
-        app:layout_constraintEnd_toStartOf="@+id/include3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/include3"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.99" />
 
     <Button
         android:id="@+id/button2"
@@ -53,8 +48,10 @@
         android:text="Yes I said this"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.468" />
 
     <TextView
         android:id="@+id/passiveActiveText"
@@ -63,8 +60,21 @@
         android:text="Passive or active"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.716" />
+
+    <ImageView
+        android:id="@+id/imageView_show_prime"
+        android:layout_width="395dp"
+        android:layout_height="464dp"
+        app:layout_constraintBottom_toBottomOf="@+id/include3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include3"
+        app:layout_constraintVertical_bias="0.247"
+        app:srcCompat="@drawable/logo_damn___small" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

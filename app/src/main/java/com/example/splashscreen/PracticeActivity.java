@@ -1,7 +1,9 @@
 package com.example.splashscreen;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +34,7 @@ import com.google.cloud.language.v1.Token;
 
 public class PracticeActivity extends LinkingFunctions {
     ImageView speechButton;
+    ImageView prime;
     EditText speechText;
     DataStorer dataStorer;
     TextView passiveActive;
@@ -43,6 +47,7 @@ public class PracticeActivity extends LinkingFunctions {
         setContentView(R.layout.activity_practice_start);
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
+        prime = (ImageView) findViewById(R.id.imageView_show_prime);
         speechText = (EditText)findViewById(R.id.editText);
         dataStorer = new DataStorer();
         passiveActive = findViewById(R.id.passiveActiveText);
@@ -56,6 +61,21 @@ public class PracticeActivity extends LinkingFunctions {
                 startActivityForResult(speechIntent,I);
             }
         });
+
+        // get all images and select one randomly
+        Field[] fields = R.drawable.class.getDeclaredFields();
+        ArrayList<String> recource_names = new ArrayList<>();
+
+        for(Field field : fields)
+        {
+            if (field.getName().contains("int") || field.getName().contains("tra")) {
+                recource_names.add(field.getName());
+            }
+        }
+        int index = (int)(Math.random() * recource_names.size());
+        String name = recource_names.get(index);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(getResources().getIdentifier(name,"drawable",getPackageName()));
+        prime.setImageDrawable(res);
     }
 
     @Override
