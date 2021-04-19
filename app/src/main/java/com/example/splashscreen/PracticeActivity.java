@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.EditText;
@@ -17,28 +19,19 @@ import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Date;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 //import com.google.cloud.language.v1.Document;
-import com.google.cloud.language.v1.AnalyzeSyntaxRequest;
-import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
-import com.google.cloud.language.v1.Document;
-import com.google.cloud.language.v1.Document.Type;
-import com.google.cloud.language.v1.EncodingType;
-import com.google.cloud.language.v1.LanguageServiceClient;
-import com.google.cloud.language.v1.Token;
 
 public class PracticeActivity extends LinkingFunctions {
-    ImageView speechButton;
-    ImageView prime;
-    EditText speechText;
-    DataStorer dataStorer;
-    TextView passiveActive;
-    Context context;
+    private ImageView speechButton;
+    private ImageView prime;
+    private EditText speechText;
+    private DataStorer dataStorer;
+    private TextView passiveActive;
+    private Context context;
     private static final int I = 1;
 
     @Override
@@ -48,7 +41,7 @@ public class PracticeActivity extends LinkingFunctions {
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         prime = (ImageView) findViewById(R.id.imageView_show_prime);
-        speechText = (EditText)findViewById(R.id.editText);
+        speechText = (EditText) findViewById(R.id.editText);
         dataStorer = new DataStorer();
         passiveActive = findViewById(R.id.passiveActiveText);
 
@@ -58,29 +51,86 @@ public class PracticeActivity extends LinkingFunctions {
                 Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "speech to text");
-                startActivityForResult(speechIntent,I);
+                startActivityForResult(speechIntent, I);
             }
         });
 
-        // get all images and select one randomly
+        // randomly select audio and corresponding image
+        String soundName;
+        if (Math.random() > 0.5) {
+            soundName = getSound("active");
+        } else {
+            soundName = getSound("passive");
+        }
+
+        // set image corresponding to sound
+        prime.setImageDrawable(getImage(soundName));
+
+        // play sound corresponding to image
+        int sound_id = context.getResources().getIdentifier(soundName, "raw", context.getPackageName());
+        MediaPlayer player = MediaPlayer.create(context, sound_id);
+
+        // delays the playing of the audio.
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                player.start();
+            }
+        }, 1000);
+    }
+
+    private Drawable getImage(String base) {
+        if (base.contains("act")) {
+            base = base.replace("_act", "");
+        }
+
+        if (base.contains("pass")) {
+            base = base.replace("_pass", "");
+        }
+
         Field[] fields = R.drawable.class.getDeclaredFields();
         ArrayList<String> recource_names = new ArrayList<>();
 
-        for(Field field : fields)
-        {
-            if (field.getName().contains("int") || field.getName().contains("tra")) {
+        for (Field field : fields) {
+            if (field.getName().contains(base)) {
                 recource_names.add(field.getName());
             }
         }
-        int index = (int)(Math.random() * recource_names.size());
-        String name = recource_names.get(index);
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(getResources().getIdentifier(name,"drawable",getPackageName()));
-        prime.setImageDrawable(res);
+
+        String name = recource_names.get(0);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(getResources().getIdentifier(name, "drawable", getPackageName()));
+        return res;
+    }
+
+    private String getSound(String voice) {
+        Field[] fields = R.raw.class.getDeclaredFields();
+        ArrayList<String> recource_names = new ArrayList<>();
+
+        if (voice.equals("active")) {
+            for (Field field : fields) {
+                if (field.getName().contains("tra") && field.getName().contains("act")) {
+                    recource_names.add(field.getName());
+                }
+            }
+            int index = (int) (Math.random() * recource_names.size());
+            return recource_names.get(index);
+        } else if (voice.equals("passive")) {
+            for (Field field : fields) {
+                if (field.getName().contains("tra") && field.getName().contains("pass")) {
+                    recource_names.add(field.getName());
+                }
+            }
+            int index = (int) (Math.random() * recource_names.size());
+            return recource_names.get(index);
+        } else {
+            return "NaN";
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == I && resultCode == RESULT_OK){
+        if (requestCode == I && resultCode == RESULT_OK) {
             ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             speechText.setText(matches.get(0).toString());
         }
@@ -94,19 +144,16 @@ public class PracticeActivity extends LinkingFunctions {
         if (inputText.isEmpty()) {
             // TODO: add popup
             return;
-        }
-        else
-        {
+        } else {
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
             DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
 
             String filename = "Results analysis on " + date.format(now);
             String message = date2.format(now) + inputText;
-            dataStorer.writeFile(filename, message,context);
+            dataStorer.writeFile(filename, message, context);
             passiveActive.setText(inputText);
         }
-
 
         //Intent i = new Intent(this, SplashActivity.class);
         //startActivity(i);

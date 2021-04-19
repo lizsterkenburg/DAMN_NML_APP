@@ -14,7 +14,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this,MainActivity.class));
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }, 2500);
     }
