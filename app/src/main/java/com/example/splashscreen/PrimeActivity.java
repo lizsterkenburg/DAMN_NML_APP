@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,37 +24,26 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+
 //import com.google.cloud.language.v1.Document;
 
-public class PracticeActivity extends LinkingFunctions {
-    private ImageView speechButton;
-    private ImageView test;
+public class PrimeActivity extends LinkingFunctions {
+    private ImageView prime;
     private EditText speechText;
+    private TextView verbPrime;
     private DataStorer dataStorer;
-    private TextView verbTest;
     private Context context;
     private static final int I = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_practice_start);
+        setContentView(R.layout.activity_prime);
         context = getApplicationContext();
-        speechButton = (ImageView) findViewById(R.id.button);
-        test = (ImageView) findViewById(R.id.imageView_show_test);
-        speechText = (EditText) findViewById(R.id.editText);
+        prime = (ImageView) findViewById(R.id.imageView_show_prime);
+        verbPrime = findViewById(R.id.verb_prime);
+        speechText = findViewById(R.id.editText);
         dataStorer = new DataStorer();
-        verbTest = findViewById(R.id.verb_test);
-
-        speechButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "speech to text");
-                startActivityForResult(speechIntent, I);
-            }
-        });
 
         // randomly select audio and corresponding image
         String soundName;
@@ -64,10 +55,39 @@ public class PracticeActivity extends LinkingFunctions {
 
         String[] words = soundName.split("_");
         String verb = words[1];
-        verbTest.setText(verb);
+        verbPrime.setText(verb);
+        prime.setImageDrawable(getImage(soundName));
 
-        // set image corresponding to sound
-        test.setImageDrawable(getImage(soundName));
+        // play sound corresponding to image
+        int sound_id = context.getResources().getIdentifier(soundName, "raw", context.getPackageName());
+        MediaPlayer player = MediaPlayer.create(context, sound_id);
+        player.setOnCompletionListener(new OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                try {
+                    Handler handlerTransition = new Handler();
+                    handlerTransition.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(PrimeActivity.this, LoadBetweenPrimeAndTest.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        }
+                    }, 1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // delays the playing of the audio.
+        Handler handlerSound = new Handler();
+        handlerSound.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                player.start();
+            }
+        }, 1000);
     }
 
     private Drawable getImage(String base) {
@@ -123,15 +143,6 @@ public class PracticeActivity extends LinkingFunctions {
         if (requestCode == I && resultCode == RESULT_OK) {
             ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             speechText.setText(matches.get(0).toString());
-            Handler handlerTransition = new Handler();
-            handlerTransition.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
-                    startActivity(i);
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                }
-            }, 1000);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

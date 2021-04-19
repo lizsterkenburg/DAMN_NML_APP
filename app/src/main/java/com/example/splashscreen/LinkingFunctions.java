@@ -41,4 +41,19 @@ public class LinkingFunctions extends AppCompatActivity {
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
+    public void toPrime(View v){
+        Intent i = new Intent(this, PrimeActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+    public void toLoadBetweenPrimeAndTest(View v){
+        Intent i = new Intent(this, LoadBetweenPrimeAndTest.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+    public void toLoadBetweenTestAndPrime(View v){
+        Intent i = new Intent(this, LoadBetweenTestAndPrime.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
 }
