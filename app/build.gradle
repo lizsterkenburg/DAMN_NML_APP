@@ -24,6 +24,8 @@ android {
         exclude 'META-INF/mimetypes.default'
         exclude 'META-INF/mailcap.default'
         pickFirst 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/LICENSE.md'
 
     }
 
@@ -41,8 +43,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.sun.mail:android-mail:1.5.5'
-    implementation 'com.sun.mail:android-activation:1.5.5'
     implementation platform('com.google.cloud:libraries-bom:19.2.1')
     implementation 'com.google.cloud:google-cloud-language'
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -54,4 +54,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.sun.mail:android-mail:1.6.6'
+    implementation 'com.sun.mail:android-activation:1.6.6'
 }

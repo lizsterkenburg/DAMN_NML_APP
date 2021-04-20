@@ -66,7 +66,8 @@ public class PracticeActivity extends LinkingFunctions {
 
         String[] words = soundName.split("_");
         String verb = words[1];
-        verbTest.setText("Verb: " + verb);
+        String verb_text = "Verb: " + verb;
+        verbTest.setText(verb_text);
 
         // set image corresponding to sound
         test.setImageDrawable(getImage(soundName));
@@ -97,24 +98,24 @@ public class PracticeActivity extends LinkingFunctions {
 
     private String getSound(String voice) {
         Field[] fields = R.raw.class.getDeclaredFields();
-        ArrayList<String> recource_names = new ArrayList<>();
+        ArrayList<String> resource_names = new ArrayList<>();
 
         if (voice.equals("active")) {
             for (Field field : fields) {
                 if (field.getName().contains("tra") && field.getName().contains("act")) {
-                    recource_names.add(field.getName());
+                    resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * recource_names.size());
-            return recource_names.get(index);
+            int index = (int) (Math.random() * resource_names.size());
+            return resource_names.get(index);
         } else if (voice.equals("passive")) {
             for (Field field : fields) {
                 if (field.getName().contains("tra") && field.getName().contains("pass")) {
-                    recource_names.add(field.getName());
+                    resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * recource_names.size());
-            return recource_names.get(index);
+            int index = (int) (Math.random() * resource_names.size());
+            return resource_names.get(index);
         } else {
             return "NaN";
         }
@@ -141,7 +142,7 @@ public class PracticeActivity extends LinkingFunctions {
             }
 
             System.out.println(counter);
-            if(counter==21){
+            if(counter==2){ //21){
                 System.out.println(context.getFileStreamPath(filename));
                 sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
             }

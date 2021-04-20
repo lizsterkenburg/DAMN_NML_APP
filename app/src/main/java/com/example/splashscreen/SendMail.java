@@ -51,7 +51,7 @@ public class SendMail {
             BodyPart messageBodyPart = new MimeBodyPart();
 
             // Now set the actual message
-            messageBodyPart.setText("Message : the results.");
+            messageBodyPart.setText("Message: the results.");
 
             // Create a multipar message
             Multipart multipart = new MimeMultipart();
@@ -86,7 +86,7 @@ public class SendMail {
                 return "Success";
             } catch (MessagingException e) {
                 e.printStackTrace();
-                return "failed";
+                return "Failed";
             }
 
 
