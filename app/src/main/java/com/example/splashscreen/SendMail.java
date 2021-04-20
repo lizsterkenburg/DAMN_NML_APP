@@ -2,22 +2,29 @@ package com.example.splashscreen;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
-import javax.mail.SendFailedException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class SendMail {
 
     String email_to = "damn.experiment@gmail.com";
 
-    public void sendMail() {
+    public void sendMail(String filePath, String name) {
         final String username = "damn.experiment";
         final String password = "NMLgroup4";
 
@@ -40,7 +47,27 @@ public class SendMail {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email_to));
             message.setSubject("Sent from DAMN App");
-            message.setText("Message : the results.");
+//            message.setText("Message : the results.");
+            BodyPart messageBodyPart = new MimeBodyPart();
+
+            // Now set the actual message
+            messageBodyPart.setText("Message : the results.");
+
+            // Create a multipar message
+            Multipart multipart = new MimeMultipart();
+
+            // Set text message part
+            multipart.addBodyPart(messageBodyPart);
+
+            // Part two is attachment
+            messageBodyPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(filePath);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(name);
+            multipart.addBodyPart(messageBodyPart);
+
+            // Send the complete message parts
+            message.setContent(multipart);
 
             new SendMailTask().execute(message);
 
@@ -57,15 +84,12 @@ public class SendMail {
             try {
                 Transport.send(messages[0]);
                 return "Success";
-            } catch (SendFailedException ee) {
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-                return "error1";
             } catch (MessagingException e) {
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-                return "error2";
+                e.printStackTrace();
+                return "failed";
             }
+
+
 
         }
     }

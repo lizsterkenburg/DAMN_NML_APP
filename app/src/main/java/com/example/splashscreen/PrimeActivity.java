@@ -25,8 +25,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
-//import com.google.cloud.language.v1.Document;
-
 public class PrimeActivity extends LinkingFunctions {
     private ImageView prime;
     private EditText speechText;

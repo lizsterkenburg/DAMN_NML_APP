@@ -138,8 +138,8 @@ public class PracticeActivity extends LinkingFunctions {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            sendMail.sendMail();
+            System.out.println(context.getFileStreamPath(filename));
+            sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
             Handler handlerTransition = new Handler();
             handlerTransition.postDelayed(new Runnable() {
                 @Override
