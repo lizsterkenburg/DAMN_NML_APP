@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class PrimeActivity extends LinkingFunctions {
     private ImageView prime;
-    private EditText speechText;
+//    private EditText speechText;
     private TextView verbPrime;
     private DataStorer dataStorer;
     private Context context;
@@ -40,7 +40,7 @@ public class PrimeActivity extends LinkingFunctions {
         context = getApplicationContext();
         prime = (ImageView) findViewById(R.id.imageView_show_prime);
         verbPrime = findViewById(R.id.verb_prime);
-        speechText = findViewById(R.id.editText);
+//        speechText = findViewById(R.id.editText);
         dataStorer = new DataStorer();
 
         // randomly select audio and corresponding image
@@ -53,7 +53,7 @@ public class PrimeActivity extends LinkingFunctions {
 
         String[] words = soundName.split("_");
         String verb = words[1];
-        verbPrime.setText(verb);
+        verbPrime.setText("Verb: " + verb);
         prime.setImageDrawable(getImage(soundName));
 
         // play sound corresponding to image
@@ -136,35 +136,35 @@ public class PrimeActivity extends LinkingFunctions {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == I && resultCode == RESULT_OK) {
-            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            speechText.setText(matches.get(0).toString());
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        if (requestCode == I && resultCode == RESULT_OK) {
+//            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+//            speechText.setText(matches.get(0).toString());
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void toSplash(View v) throws IOException {
-        String inputText = speechText.getText().toString();
-        if (inputText.isEmpty()) {
-            // TODO: add popup
-            return;
-        } else {
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
-            DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
-
-            String filename = "Results analysis on " + date.format(now);
-            String message = date2.format(now) + inputText;
-            dataStorer.writeFile(filename, message, context);
-        }
-
-        //Intent i = new Intent(this, SplashActivity.class);
-        //startActivity(i);
-        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public void toSplash(View v) throws IOException {
+//        String inputText = speechText.getText().toString();
+//        if (inputText.isEmpty()) {
+//            // TODO: add popup
+//            return;
+//        } else {
+//            LocalDateTime now = LocalDateTime.now();
+//            DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
+//            DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
+//
+//            String filename = "Results analysis on " + date.format(now);
+//            String message = date2.format(now) + inputText;
+//            dataStorer.writeFile(filename, message, context);
+//        }
+//
+//        //Intent i = new Intent(this, SplashActivity.class);
+//        //startActivity(i);
+//        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+//    }
 
 }

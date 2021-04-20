@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class PracticeActivity extends LinkingFunctions {
     private ImageView speechButton;
     private ImageView test;
-    private EditText speechText;
+//    private EditText speechText;
     private DataStorer dataStorer;
     private TextView verbTest;
     private Context context;
@@ -41,7 +41,7 @@ public class PracticeActivity extends LinkingFunctions {
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         test = (ImageView) findViewById(R.id.imageView_show_test);
-        speechText = (EditText) findViewById(R.id.editText);
+//        speechText = (EditText) findViewById(R.id.editText);
         dataStorer = new DataStorer();
         verbTest = findViewById(R.id.verb_test);
         sendMail = new SendMail();
@@ -66,7 +66,7 @@ public class PracticeActivity extends LinkingFunctions {
 
         String[] words = soundName.split("_");
         String verb = words[1];
-        verbTest.setText(verb);
+        verbTest.setText("Verb: " + verb);
 
         // set image corresponding to sound
         test.setImageDrawable(getImage(soundName));
@@ -125,7 +125,7 @@ public class PracticeActivity extends LinkingFunctions {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == I && resultCode == RESULT_OK) {
             ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            speechText.setText(matches.get(0).toString());
+//            speechText.setText(matches.get(0).toString());
 
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
@@ -133,13 +133,19 @@ public class PracticeActivity extends LinkingFunctions {
 
             String filename = "Results analysis on " + date.format(now);
             String message = date2.format(now) + matches.get(0).toString();
+            int counter = 0;
             try {
-                dataStorer.writeFile(filename, message, context);
+                counter = dataStorer.writeFile(filename, message, context);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(context.getFileStreamPath(filename));
-            sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
+
+            System.out.println(counter);
+            if(counter==21){
+                System.out.println(context.getFileStreamPath(filename));
+                sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
+            }
+
             Handler handlerTransition = new Handler();
             handlerTransition.postDelayed(new Runnable() {
                 @Override
@@ -154,25 +160,25 @@ public class PracticeActivity extends LinkingFunctions {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void toSplash(View v) throws IOException {
-        String inputText = speechText.getText().toString();
-        if (inputText.isEmpty()) {
-            // TODO: add popup
-            return;
-        } else {
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
-            DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
-
-            String filename = "Results analysis on " + date.format(now);
-            String message = date2.format(now) + inputText;
-            dataStorer.writeFile(filename, message, context);
-        }
-
-        //Intent i = new Intent(this, SplashActivity.class);
-        //startActivity(i);
-        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public void toSplash(View v) throws IOException {
+//        String inputText = speechText.getText().toString();
+//        if (inputText.isEmpty()) {
+//            // TODO: add popup
+//            return;
+//        } else {
+//            LocalDateTime now = LocalDateTime.now();
+//            DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
+//            DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
+//
+//            String filename = "Results analysis on " + date.format(now);
+//            String message = date2.format(now) + inputText;
+//            dataStorer.writeFile(filename, message, context);
+//        }
+//
+//        //Intent i = new Intent(this, SplashActivity.class);
+//        //startActivity(i);
+//        //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+//    }
 
 }

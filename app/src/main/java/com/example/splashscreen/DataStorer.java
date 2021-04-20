@@ -15,15 +15,22 @@ import java.io.OutputStreamWriter;
 public class DataStorer {
 
 
-    public void writeFile(String fileName, String message, Context context) throws IOException {
+    public int writeFile(String fileName, String message, Context context) throws IOException {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_APPEND));
             outputStreamWriter.append(message + "\n");
             outputStreamWriter.close();
-            System.out.println(readFromFile(context, fileName));
+
+            String fileText = readFromFile(context, fileName);
+            String[] sentences = fileText.split("\n");
+            System.out.println(fileText);
+
+            return sentences.length;
+
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
+            return -1;
         }
     }
 
