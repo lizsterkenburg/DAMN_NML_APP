@@ -21,6 +21,10 @@ android {
         exclude 'META-INF/LGPL2.1'
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/mimetypes.default'
+        exclude 'META-INF/mailcap.default'
+        pickFirst 'META-INF/LICENSE.txt'
+
     }
 
 
@@ -44,6 +48,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

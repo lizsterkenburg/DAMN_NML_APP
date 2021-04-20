@@ -31,6 +31,7 @@ public class PracticeActivity extends LinkingFunctions {
     private DataStorer dataStorer;
     private TextView verbTest;
     private Context context;
+    private SendMail sendMail;
     private static final int I = 1;
 
     @Override
@@ -43,6 +44,7 @@ public class PracticeActivity extends LinkingFunctions {
         speechText = (EditText) findViewById(R.id.editText);
         dataStorer = new DataStorer();
         verbTest = findViewById(R.id.verb_test);
+        sendMail = new SendMail();
 
         speechButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +139,7 @@ public class PracticeActivity extends LinkingFunctions {
                 e.printStackTrace();
             }
 
+            sendMail.sendMail();
             Handler handlerTransition = new Handler();
             handlerTransition.postDelayed(new Runnable() {
                 @Override
