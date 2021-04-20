@@ -4,12 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingLeft="-2dp"
+    android:paddingRight="0dp"
+    android:paddingBottom="0dp"
     tools:context=".MainActivity">
 
 
     <include
         android:id="@+id/include"
         layout="@layout/titlebar_basic_layout" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="117dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:contentDescription="@string/owl"
+        android:scaleX="1.7"
+        android:scaleY="1.7"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.652"
+        app:srcCompat="@drawable/logo_damn" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="258dp"
+        android:layout_height="300dp"
+        android:contentDescription="@string/bubble"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72"
+        app:srcCompat="@drawable/bubble" />
+
+    <TextView
+        android:id="@+id/homeMessage"
+        android:layout_width="192dp"
+        android:layout_height="129dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:gravity="center"
+        android:text="Hello there, best of luck on today's practice!"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.468" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -22,15 +66,17 @@
         app:layout_constraintTop_toTopOf="@+id/include"
         app:layout_constraintVertical_bias="1.0">
 
+
         <ImageButton
             android:id="@+id/practiceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:background="@drawable/button_border"
             android:contentDescription="@string/PracticeButtonDesc"
+            android:cropToPadding="false"
             android:onClick="toPrime"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/practice" />
@@ -39,8 +85,9 @@
             android:id="@+id/HTPButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginLeft="44dp"
+            android:background="@drawable/button_border"
             android:contentDescription="@string/HTPButtonDesc"
             android:onClick="toHTP"
             app:layout_constraintBottom_toTopOf="@+id/HelpButton"
@@ -52,8 +99,9 @@
             android:id="@+id/AchievementsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="36dp"
-            android:layout_marginRight="36dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
+            android:background="@drawable/button_border"
             android:contentDescription="@string/AchievementsButtonDesc"
             android:onClick="toAchievements"
             app:layout_constraintBottom_toTopOf="@+id/HelpButton"
@@ -66,6 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
+            android:background="@drawable/button_border"
             android:contentDescription="@string/HelpButtonDesc"
             android:onClick="toHelp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -75,49 +124,6 @@
             app:srcCompat="@drawable/help" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginBottom="28dp"
-        android:contentDescription="@string/owl"
-        android:scaleX="1.7"
-        android:scaleY="1.7"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include"
-        app:layout_constraintVertical_bias="0.99"
-        app:srcCompat="@drawable/green_owl_no_text" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="277dp"
-        android:layout_height="329dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/bubble"
-        android:contentDescription="@string/bubble" />
-
-    <TextView
-        android:id="@+id/homeMessage"
-        android:layout_width="189dp"
-        android:layout_height="131dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:gravity="center"
-        android:text="@string/hello_there_i_m_mr_owl_good_luck_today_hoot_hoot"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.409" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
