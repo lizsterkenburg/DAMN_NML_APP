@@ -119,10 +119,24 @@ public class PracticeActivity extends LinkingFunctions {
     }
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.O)
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == I && resultCode == RESULT_OK) {
             ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             speechText.setText(matches.get(0).toString());
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
+            DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
+
+            String filename = "Results analysis on " + date.format(now);
+            String message = date2.format(now) + matches.get(0).toString();
+            try {
+                dataStorer.writeFile(filename, message, context);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             Handler handlerTransition = new Handler();
             handlerTransition.postDelayed(new Runnable() {
                 @Override
