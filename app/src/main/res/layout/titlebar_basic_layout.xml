@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DDDDDD"
-    tools:context=".MainActivity">
+    android:background="#F1F0F0"
+    tools:context=".LinkingFunctions">
 
 
     <androidx.appcompat.widget.Toolbar
