@@ -97,6 +97,18 @@
 
             <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:weightSum="1.0">
+                <View
+                    android:id="@+id/viewdc"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight=".05" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
                 <Button
@@ -106,13 +118,23 @@
                     android:layout_column="1"
                     android:layout_span="3"
                     android:onClick="toPracticeStartExplanation"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:text="@string/practice"
                     android:textSize="28sp"
                     app:backgroundTint="@color/teal_200" />
             </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:weightSum="1.0">
+                <View
+                    android:id="@+id/viewdd"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight=".05" />
 
+            </TableRow>
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -125,12 +147,12 @@
                     android:layout_column="1"
                     android:layout_span="1"
                     android:layout_weight=".475"
-                    android:autoSizeMaxTextSize="12sp"
+                    android:autoSizeMaxTextSize="16sp"
                     android:autoSizeMinTextSize="10sp"
                     android:autoSizeTextType="uniform"
                     android:onClick="toHTP"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:text="@string/how_to_play"
                     android:textSize="16sp"
                     app:backgroundTint="@color/teal_200"
@@ -150,18 +172,29 @@
                     android:layout_column="3"
                     android:layout_span="1"
                     android:layout_weight=".475"
-                    android:autoSizeMaxTextSize="12sp"
+                    android:autoSizeMaxTextSize="16sp"
                     android:autoSizeMinTextSize="10sp"
                     android:autoSizeTextType="uniform"
                     android:onClick="toAchievements"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:text="@string/achievements"
+                    android:textSize="16sp"
                     app:backgroundTint="@color/teal_200"
                     tools:layout_editor_absoluteY="110dp" />
 
             </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:weightSum="1.0">
+                <View
+                    android:id="@+id/viewd"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight=".05" />
 
+            </TableRow>
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
@@ -173,8 +206,8 @@
                     android:layout_column="1"
                     android:layout_span="3"
                     android:onClick="toHelp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:text="@string/help"
                     android:textSize="28sp"
                     app:backgroundTint="@color/teal_200"
