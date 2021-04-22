@@ -7,4 +7,77 @@
     tools:context=".HelpActivity">
     <include layout="@layout/titlebar_basic_layout"/>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingTop="85dp"
+    android:paddingRight="25dp"
+    android:weightSum="1.0"
+    app:layout_constraintBottom_toBottomOf="@+id/include2"
+    app:layout_constraintEnd_toEndOf="@+id/include2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/bg_home_message"
+        android:gravity="center"
+        android:text="@string/help"
+        android:textSize="28sp" />
+
+    <View
+        android:id="@+id/view442"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight=".025" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/bg_completed"
+        android:gravity="center"
+        android:text="@string/question_1"
+        android:textSize="22sp" />
+
+    <View
+        android:id="@+id/view332"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight=".025" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/bg_completed"
+        android:gravity="center"
+        android:text="@string/question_2"
+        android:textSize="22sp" />
+
+    <View
+        android:id="@+id/view552"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight=".025" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/bg_completed"
+        android:gravity="center"
+        android:text="@string/contact_us_at_damn_experiment_gmail_com"
+        android:textSize="22sp" />
+
+</LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

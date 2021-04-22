@@ -26,4 +26,10 @@ public class PracticeDone extends  LinkingFunctions  {
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
+
+    public void toHelp(View v){
+        Intent i = new Intent(this, HelpActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
 }

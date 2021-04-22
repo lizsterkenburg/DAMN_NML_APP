@@ -27,4 +27,12 @@
     <string name="achievements">Achievements</string>
     <string name="how_to_play">How to play</string>
     <string name="logo_mainscreen">logo_mainscreen</string>
+    <string name="placeholder_award_first_practice_done">Placeholder award first practice done</string>
+    <string name="placeholder_one_week_complete_award">Placeholder one week complete award</string>
+    <string name="placeholder_streak_days">Placeholder streak days</string>
+    <string name="these_are_your_achievements">These are your achievements!</string>
+    <string name="question_1">Question 1</string>
+    <string name="question_2">Question 2</string>
+    <string name="question_3">Question 3</string>
+    <string name="contact_us_at_damn_experiment_gmail_com">Contact us at: DAMN.experiment@gmail.com</string>
 </resources>
