@@ -14,10 +14,13 @@ import android.view.View;
 
 public class PracticeDone extends  LinkingFunctions  {
 
+    private String exerciseComplete = "";
+    private String exerciseIncomplete = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_done);
+        MainActivity.exerciseDone = true;
 
     }
 

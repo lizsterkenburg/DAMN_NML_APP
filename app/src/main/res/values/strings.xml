@@ -35,4 +35,7 @@
     <string name="question_2">Question 2</string>
     <string name="question_3">Question 3</string>
     <string name="contact_us_at_damn_experiment_gmail_com">Contact us at: DAMN.experiment@gmail.com</string>
+    <string name="today_s_practice_has_yet_to_be_completed">Today\'s practice has yet to be completed. &#x2B1C;		 </string>
+    <string name="today_s_practice_has_been_completed">Today\'s practice has been completed. &#x2705;	</string>
+
 </resources>

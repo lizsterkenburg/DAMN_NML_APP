@@ -79,7 +79,7 @@
                     android:gravity="center"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
-                    android:text="Today's practice has yet to be  completed."
+                    android:text="@string/today_s_practice_has_yet_to_be_completed"
                     android:textSize="24sp" />
             </TableRow>
 
