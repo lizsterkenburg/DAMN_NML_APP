@@ -64,6 +64,12 @@ public class LinkingFunctions extends AppCompatActivity {
 
     }
 
+    public void toPracticeStartExplanation(View v){
+        Intent i =  new Intent(this,PracticeActivityStartScreen.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+
 
 
 }

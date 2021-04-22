@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +36,7 @@ public class PracticeActivity extends LinkingFunctions {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_practice_start);
+        setContentView(R.layout.activity_practice_speak);
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         test = (ImageView) findViewById(R.id.imageView_show_test);

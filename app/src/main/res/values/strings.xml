@@ -35,7 +35,15 @@
     <string name="question_2">Question 2</string>
     <string name="question_3">Question 3</string>
     <string name="contact_us_at_damn_experiment_gmail_com">Contact us at: DAMN.experiment@gmail.com</string>
-    <string name="today_s_practice_has_yet_to_be_completed">Today\'s practice has yet to be completed. &#x2B1C;		 </string>
-    <string name="today_s_practice_has_been_completed">Today\'s practice has been completed. &#x2705;	</string>
+    <string name="today_s_practice_has_yet_to_be_completed">Today\'s practice has not yet been completed.		 </string>
+    <string name="today_s_practice_has_been_completed">Today\'s practice has been completed.	</string>
+    <string name="instructions_for_the_practice_exercises">Instructions for the practice exercises.</string>
+    <string name="placeholder">placeholder</string>
+    <string name="listen_to_the_description">Listen to the description</string>
+    <string name="microphone">microphone</string>
+    <string name="title_activity_practice_start_screen">PracticeActivityStartScreen</string>
+    <string name="start_practising">Start practising</string>
+    <string name="placeholder_explanation">Placeholder explanation</string>
+    <string name="practice_start">Practice start</string>
 
 </resources>

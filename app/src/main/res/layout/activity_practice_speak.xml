@@ -9,17 +9,16 @@
 
     <include
         android:id="@+id/include3"
-        layout="@layout/titlebar_basic_layout"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        layout="@layout/titlebar_basic_layout" />
+
     <ImageView
-        android:id="@+id/imageView_show_prime"
+        android:id="@+id/imageView_show_test"
         android:layout_width="395dp"
         android:layout_height="464dp"
         app:layout_constraintBottom_toBottomOf="@+id/include3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/include3"
-        app:layout_constraintTop_toTopOf="@+id/include3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_damn___small" />
 
     <LinearLayout
@@ -28,39 +27,36 @@
         android:orientation="vertical"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
-        android:weightSum="1.0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/include3"
-        app:layout_constraintStart_toStartOf="@+id/include3"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+        android:weightSum="1.0">
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.82" />
-
+            android:layout_weight="0.67" />
+        <ImageButton
+            android:id="@+id/button"
+            android:layout_width="94dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/mic"
+            android:layout_gravity="center"
+            android:contentDescription="@string/microphone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.03" />
         <TextView
-            android:id="@+id/verb_prime"
+            android:id="@+id/verb_test"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
             android:background="@drawable/bg_completed"
             android:gravity="center"
-            android:text="@string/listen_to_the_description"
-            android:textSize="30sp"
-            android:autoSizeMaxTextSize="30sp"
-            android:autoSizeMinTextSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/include3"
-            app:layout_constraintVertical_bias="0.93" />
-
+            android:text="TextView"
+            android:textSize="30sp" />
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

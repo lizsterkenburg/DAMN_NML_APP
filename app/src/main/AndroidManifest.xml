@@ -18,9 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
         <activity
+            android:name=".PracticeActivityStartScreen"
+            android:label="@string/title_activity_practice_start_screen"
+            android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
+        <activity
             android:name=".PracticeDone"
             android:label="@string/title_activity_practice_done"
-            android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
+            android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PrimeActivity"
             android:screenOrientation="portrait"

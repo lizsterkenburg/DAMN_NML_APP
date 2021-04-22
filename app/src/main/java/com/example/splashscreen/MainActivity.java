@@ -30,7 +30,7 @@ public class MainActivity extends LinkingFunctions {
             //complete += new String(Character.toChars(2B1C));
         }
         else {
-            complete += "Today's practice has yet to be completed.";
+            complete += "Today's practice has not yet been completed.";
             //complete += new String(Character.toChars(2705));
 
         }

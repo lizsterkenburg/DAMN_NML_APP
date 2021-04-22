@@ -79,7 +79,10 @@
             android:background="@drawable/bg_completed"
             android:gravity="center"
             android:text="@string/placeholder_one_week_complete_award"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:autoSizeMaxTextSize="16sp"
+            android:autoSizeMinTextSize="22sp"
+            />
 
     </LinearLayout>
 

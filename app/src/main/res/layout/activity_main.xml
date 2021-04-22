@@ -105,7 +105,7 @@
                     android:layout_height="match_parent"
                     android:layout_column="1"
                     android:layout_span="3"
-                    android:onClick="toPrime"
+                    android:onClick="toPracticeStartExplanation"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:text="@string/practice"
