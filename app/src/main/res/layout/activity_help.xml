@@ -24,11 +24,14 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.1"
         android:background="@drawable/bg_home_message"
         android:gravity="center"
         android:text="@string/help"
-        android:textSize="28sp" />
+        android:textSize="26sp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="22sp"
+        android:autoSizeMaxTextSize="28sp"/>
 
     <View
         android:id="@+id/view442"

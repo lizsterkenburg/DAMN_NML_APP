@@ -142,7 +142,7 @@ public class PracticeActivity extends LinkingFunctions {
 
             System.out.println(counter);
             // TODO fill in real number of trials for mail sending
-            if(counter==4){ //21){
+            if(counter==21){
                 System.out.println(context.getFileStreamPath(filename));
                 sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
 
