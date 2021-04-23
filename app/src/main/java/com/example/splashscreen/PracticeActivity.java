@@ -36,7 +36,7 @@ public class PracticeActivity extends LinkingFunctions {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_practice_speak);
+        setContentView(R.layout.activity_practice_speak_original);
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         test = (ImageView) findViewById(R.id.imageView_show_test);

@@ -12,15 +12,6 @@
         layout="@layout/titlebar_basic_layout"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
-    <ImageView
-        android:id="@+id/imageView_show_prime"
-        android:layout_width="395dp"
-        android:layout_height="464dp"
-        app:layout_constraintBottom_toBottomOf="@+id/include3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/include3"
-        app:layout_constraintTop_toTopOf="@+id/include3"
-        app:srcCompat="@drawable/logo_damn___small" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,12 +24,29 @@
         app:layout_constraintEnd_toEndOf="@+id/include3"
         app:layout_constraintStart_toStartOf="@+id/include3"
         app:layout_constraintTop_toTopOf="parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.03" />
+
+    <ImageView
+        android:id="@+id/imageView_show_prime"
+        android:layout_width="395dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        app:layout_constraintBottom_toBottomOf="@+id/include3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/include3"
+        app:layout_constraintTop_toTopOf="@+id/include3"
+        app:srcCompat="@drawable/logo_damn___small" />
+
+
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.82" />
+            android:layout_weight="0.22" />
 
         <TextView
             android:id="@+id/verb_prime"
