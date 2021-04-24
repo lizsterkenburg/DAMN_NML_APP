@@ -10,6 +10,7 @@
     <include
         android:id="@+id/include3"
         layout="@layout/titlebar_basic_layout" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,40 +18,45 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:weightSum="1.0">
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.03" />
-    <ImageView
-        android:id="@+id/imageView_show_test"
-        android:layout_width="395dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.6"
-        app:layout_constraintBottom_toBottomOf="@+id/include3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_damn___small" />
+
+        <ImageView
+            android:id="@+id/imageView_show_test"
+            android:layout_width="395dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            app:layout_constraintBottom_toBottomOf="@+id/include3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_damn___small" />
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.05" />
+
         <ImageButton
             android:id="@+id/button"
             android:layout_width="94dp"
             android:layout_height="0dp"
-            android:layout_weight="0.12"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/mic"
             android:layout_gravity="center"
+            android:layout_weight="0.12"
+            android:background="@drawable/mic"
             android:contentDescription="@string/microphone" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.05" />
+
         <TextView
             android:id="@+id/verb_test"
             android:layout_width="match_parent"

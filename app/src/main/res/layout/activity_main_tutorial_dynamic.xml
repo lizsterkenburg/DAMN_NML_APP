@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LinkingFunctions"
+    tools:ignore="ExtraText">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/titlebar_basic_layout" />
+
+
+
+    <TextView
+        android:id="@+id/homeMessage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="28sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/bg_home_message"
+        android:gravity="center"
+        android:text="@string/hello_there_i_m_mr_owl_good_luck_today_hoot_hoot"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+    <!--        app:layout_constraintDimensionRatio="3:1"
+-->
+
+
+    <TextView
+        android:id="@+id/textViewExerciseComplete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/bg_completed"
+        android:gravity="center"
+        android:text="@string/today_s_practice_has_yet_to_be_completed"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3" />
+    <!--        app:layout_constraintDimensionRatio="5:1"
+-->
+
+    <Button
+        android:id="@+id/practiceButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="28sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeTextType="uniform"
+        android:onClick="toPracticeStartExplanation"
+        android:text="@string/practice"
+        android:textSize="28sp"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
+    <!--app:layout_constraintDimensionRatio="4:1"-->
+
+
+    <Button
+        android:id="@+id/HTPButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="16sp"
+        android:autoSizeMinTextSize="5sp"
+        android:autoSizeTextType="uniform"
+        android:onClick="toHTP"
+        android:text="@string/how_to_play"
+        android:textSize="12sp"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
+        app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="449dp" />
+    <!--        app:layout_constraintDimensionRatio="3:1"
+-->
+
+    <Button
+        android:id="@+id/achievementsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="16sp"
+        android:autoSizeMinTextSize="5sp"
+        android:autoSizeTextType="uniform"
+        android:onClick="toAchievements"
+        android:text="@string/achievements"
+        android:textSize="12sp"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_center_right"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="78dp" />
+    <!--        app:layout_constraintDimensionRatio="3:1"
+-->
+
+    <Button
+        android:id="@+id/helpButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="28sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeTextType="uniform"
+        android:onClick="toHelp"
+        android:text="@string/help"
+        android:textSize="28sp"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_10"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_9" />
+    <!--        app:layout_constraintDimensionRatio="3:1"
+    -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.47" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.53" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/homeMessage"
+        app:layout_constraintGuide_percent="0.11"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_bottom_toolbar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_3"
+        app:layout_constraintGuide_percent="0.31"
+        app:layout_constraintTop_toBottomOf="@+id/homeMessage" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textViewExerciseComplete"
+        app:layout_constraintGuide_percent="0.33"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_5"
+        app:layout_constraintGuide_percent="0.43"
+        app:layout_constraintTop_toBottomOf="@+id/textViewExerciseComplete" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/practiceButton"
+        app:layout_constraintGuide_percent="0.45"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_7"
+        app:layout_constraintGuide_percent="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/practiceButton" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
+        app:layout_constraintGuide_percent="0.62"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_9"
+        app:layout_constraintGuide_percent="0.77"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
+        app:layout_constraintGuide_percent="0.79"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.94"
+        app:layout_constraintTop_toBottomOf="@+id/helpButton" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_bottom_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
+        app:layout_constraintGuide_begin="63dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="HTPButton,achievementsButton"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
