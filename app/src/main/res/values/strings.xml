@@ -42,5 +42,7 @@
     <string name="placeholder_explanation">Placeholder explanation</string>
     <string name="practice_start">Practice start</string>
     <string name="settings">Settings</string>
+    <string name="first_you_will_see_a_picture_and_a_verb_the_picture_will_be_described_to_you_by_using_the_given_verb_listen_very_carefully_a_short_pause_will_follow_next_you_see_another_picture_and_another_verb_this_time_you_will_have_to_describe_it_yourself_using_the_given_verb_to_describe_the_picture_you_have_to_click_on_the_loudspeaker_and_then_you_can_start_speaking_your_voice_will_be_detected_automatically">First, you will see a picture and a verb. The picture will be described to you by using the given verb. Listen very carefully. A short pause will follow. Next, you see another picture and another verb. This time, you will have to describe it yourself using the given verb. To describe the picture, you have to click on the loudspeaker and then you can start speaking. Your voice will be detected automatically.</string>
+    <string name="homebuttonhouse">HomeButtonHouse</string>
 
 </resources>

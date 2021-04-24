@@ -16,7 +16,7 @@ public class MainActivity extends LinkingFunctions {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_old_layout);
+        setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().hide();
 
