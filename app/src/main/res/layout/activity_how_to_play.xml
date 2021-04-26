@@ -7,20 +7,43 @@
     tools:context=".HowToPlayActivity">
     <include layout="@layout/titlebar_basic_layout"/>
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+        <TextView
+            android:id="@+id/homeMessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMaxTextSize="28sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/bubble_3_crop"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="25dp"
+            android:text="@string/instructions_for_the_practice_exercises"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_left_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+        <!--        app:layout_constraintDimensionRatio="3:1"
                 android:background="@drawable/bg_home_message"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:text="@string/instructions_for_the_practice_exercises"
 
-                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
-                app:layout_constraintEnd_toEndOf="@id/guideline_right"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/guideline_left"
-                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+    -->
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/logo_damn"
+            tools:layout_editor_absoluteY="66dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
+            app:layout_constraintEnd_toEndOf="@id/guideline_left_left"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+
 
             <TextView
                 android:id="@+id/textView433"
@@ -64,7 +87,26 @@
                 app:layout_constraintBottom_toTopOf="@+id/homeMessage"
                 app:layout_constraintGuide_percent="0.11"
                 app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_bottom_toolbar" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_very_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.99" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_center_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.47" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.40" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_horizontal_2"
                 android:layout_width="wrap_content"
@@ -89,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_5"
-                app:layout_constraintGuide_percent="0.98"
+                app:layout_constraintGuide_percent="0.9"
                 app:layout_constraintTop_toBottomOf="@+id/textViewExerciseComplete" />
 
 
