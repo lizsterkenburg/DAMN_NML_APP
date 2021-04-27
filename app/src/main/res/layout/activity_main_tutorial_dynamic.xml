@@ -32,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/guideline_left_left"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top"
+        tools:targetApi="o" />
     <!--        app:layout_constraintDimensionRatio="3:1"
             android:background="@drawable/bg_home_message"
 
@@ -57,13 +58,13 @@
         android:id="@+id/textViewExerciseComplete"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMaxTextSize="22sp"
         android:autoSizeMinTextSize="10sp"
         android:autoSizeTextType="uniform"
         android:background="@drawable/bg_completed"
         android:gravity="center"
         android:text="@string/today_s_practice_has_yet_to_be_completed"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
@@ -87,7 +88,8 @@
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5"
+        tools:targetApi="o" />
     <!--app:layout_constraintDimensionRatio="4:1"-->
 
 
@@ -129,7 +131,8 @@
         app:layout_constraintStart_toStartOf="@id/guideline_center_right"
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7"
         tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="78dp" />
+        tools:layout_editor_absoluteY="78dp"
+        tools:targetApi="o" />
     <!--        app:layout_constraintDimensionRatio="3:1"
 -->
 
