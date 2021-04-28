@@ -45,7 +45,26 @@
     <string name="settings">Here you can change the settings</string>
     <string name="you_are_done">You are done. Good job!</string>
     <string name="practiceStartMessage">Start your practice here </string>
-    <string name="first_you_will_see_a_picture_and_a_verb_the_picture_will_be_described_to_you_by_using_the_given_verb_listen_very_carefully_a_short_pause_will_follow_next_you_see_another_picture_and_another_verb_this_time_you_will_have_to_describe_it_yourself_using_the_given_verb_to_describe_the_picture_you_have_to_click_on_the_loudspeaker_and_then_you_can_start_speaking_your_voice_will_be_detected_automatically">First, you will see a picture and a verb. The picture will be described to you by using the given verb. Listen very carefully. A short pause will follow. Next, you see another picture and another verb. This time, you will have to describe it yourself using the given verb. To describe the picture, you have to click on the loudspeaker and then you can start speaking. Your voice will be detected automatically.</string>
+    <string name="first_you_will_see_a_picture_and_a_verb_the_picture_will_be_described_to_you_by_using_the_given_verb_listen_very_carefully_a_short_pause_will_follow_next_you_see_another_picture_and_another_verb_this_time_you_will_have_to_describe_it_yourself_using_the_given_verb_to_describe_the_picture_you_have_to_click_on_the_loudspeaker_and_then_you_can_start_speaking_your_voice_will_be_detected_automatically">
+        When the practice starts,
+        you will see a picture and a verb. The picture contains one or more people and their actions depict the verb.
+        The actions will be described to you in a sentence with the verb and the people in the picture.
+        Listen very carefully. A short pause follows. Next, you see another picture and another verb.
+        This time, you will have to describe it yourself using the given verb and people in the picture.
+        To describe the picture, you have to click on the microphone and then you can start speaking.
+        Your voice will be detected automatically. This exercise of listening and speaking repeats 20 times.</string>
     <string name="homebuttonhouse">HomeButtonHouse</string>
+    <string name="title_activity_example_practice">example_practice</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Example">Example</string>
+    <string name="example_text">The image above depicts a boy, a girl and the verb "to chase". This picture could be described as follows:
+        "The boy chases the girl". If you have to describe a picture, first think of what you want to say.
+        Then press the microphone and speak the sentence out loud. </string>
+    <string name="start_practice">Start practice</string>
 
 </resources>
