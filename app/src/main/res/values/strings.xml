@@ -1,4 +1,5 @@
 <resources>
+    <string name="notifaction">notification</string>
     <string name="app_name">D.A.M.N.</string>
     <string name="logo">logo</string>
     <string name="app_name_title_bar">Name</string>

@@ -11,17 +11,18 @@
     <uses-feature android:name="android.hardware.screen.portrait" />
 
     <application
-        android:screenOrientation="sensorPortrait"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
+        <activity android:name=".AlarmActivity"></activity>
         <activity
             android:name=".PracticeActivityStartScreen"
             android:label="@string/title_activity_practice_start_screen"
-            android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
+            android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PracticeDone"
             android:label="@string/title_activity_practice_done"
