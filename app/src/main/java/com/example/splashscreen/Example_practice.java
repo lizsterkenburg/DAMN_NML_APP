@@ -18,7 +18,5 @@ public class Example_practice extends AppCompatActivity {
         setContentView(R.layout.activity_example_practice);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        });
     }
 }

@@ -26,7 +26,7 @@
         <activity
             android:name=".Example_practice"
             android:label="@string/title_activity_example_practice"
-            android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
+            android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PracticeActivityStartScreen"
             android:label="@string/title_activity_practice_start_screen"
