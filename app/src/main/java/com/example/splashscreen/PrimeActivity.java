@@ -44,13 +44,18 @@ public class PrimeActivity extends LinkingFunctions {
         dataStorer = new DataStorer();
 
         // randomly select audio and corresponding image
-        String soundName;
-        if (Math.random() > 0.5) {
-            soundName = getSound("active");
+        String soundName = "";
+        if (Math.random() < 0.25){
+            soundName = getSound("int");
         } else {
-            soundName = getSound("passive");
+            if (Math.random() > 0.5) {
+                soundName = getSound("active");
+            } else {
+                soundName = getSound("passive");
+            }
         }
 
+        System.out.println(soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
         verbPrime.setText("Verb: " + verb);
@@ -126,6 +131,14 @@ public class PrimeActivity extends LinkingFunctions {
         } else if (voice.equals("passive")) {
             for (Field field : fields) {
                 if (field.getName().contains("tra") && field.getName().contains("pass")) {
+                    recource_names.add(field.getName());
+                }
+            }
+            int index = (int) (Math.random() * recource_names.size());
+            return recource_names.get(index);
+        } else if (voice.equals("int")){
+            for (Field field : fields) {
+                if (field.getName().contains("int")) {
                     recource_names.add(field.getName());
                 }
             }
