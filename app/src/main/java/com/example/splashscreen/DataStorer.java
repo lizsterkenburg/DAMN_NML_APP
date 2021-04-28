@@ -17,12 +17,16 @@ public class DataStorer {
 
     public int writeFile(String fileName, String message, Context context) throws IOException {
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_APPEND));
-            outputStreamWriter.append(message + "\n");
-            outputStreamWriter.close();
+            if (!message.equals( "-1")) {
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_APPEND));
+                outputStreamWriter.append(message + "\n");
+                outputStreamWriter.close();
+            }
 
             String fileText = readFromFile(context, fileName);
             String[] sentences = fileText.split("\n");
+
+            System.out.println("file");
             System.out.println(fileText);
 
             return sentences.length;
@@ -57,6 +61,7 @@ public class DataStorer {
         }
         catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
+            return ret;
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
         }
