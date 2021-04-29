@@ -16,6 +16,8 @@
         android:autoSizeTextType="uniform"
         android:background="@drawable/bubble_3_crop"
         android:gravity="center"
+        android:textColor="@color/teal_700"
+
         android:paddingLeft="20dp"
         android:paddingRight="10dp"
         android:paddingBottom="25dp"

@@ -22,6 +22,7 @@
             android:autoSizeMaxTextSize="28sp"
             android:autoSizeMinTextSize="10sp"
             android:autoSizeTextType="uniform"
+            android:textColor="@color/teal_700"
             android:background="@drawable/bubble_3_crop"
             android:gravity="center"
             android:paddingLeft="20dp"
