@@ -18,6 +18,7 @@ public class SettingsActivity extends LinkingFunctions {
         setContentView(R.layout.activity_settings);
         switch1 = findViewById(R.id.switch1);
 
+
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         Boolean notificationState = sharedPref.getBoolean(getString(R.string.notifaction_state), true);
 
@@ -32,7 +33,8 @@ public class SettingsActivity extends LinkingFunctions {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putBoolean(getString(R.string.notifaction_state), v.getStateDescription().equals("ON"));
+                Boolean state = switch1.isChecked();
+                editor.putBoolean(getString(R.string.notifaction_state), state);
                 editor.apply();
             }
         });
