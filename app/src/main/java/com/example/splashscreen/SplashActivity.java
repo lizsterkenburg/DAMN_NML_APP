@@ -1,23 +1,15 @@
 package com.example.splashscreen;
 
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Calendar;
 
@@ -67,6 +59,8 @@ public class SplashActivity extends AppCompatActivity {
         // Set the alarm to start at 21:32 PM
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
+//        calendar.set(Calendar.HOUR_OF_DAY, 18);
+//        calendar.set(Calendar.MINUTE, 27);
         calendar.set(Calendar.HOUR_OF_DAY, sharedPref.getInt(getString(R.string.hour),20));
         calendar.set(Calendar.MINUTE, sharedPref.getInt(getString(R.string.minute),0));
         calendar.set(Calendar.SECOND, 0);

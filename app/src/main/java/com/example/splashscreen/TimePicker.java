@@ -44,21 +44,10 @@ public class TimePicker extends DialogFragment
 
     @Override
     public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
-
         setAlarm(hourOfDay, minute);
     }
 
-    public void setAlarm(int hour, int minute)
-    {
-        //Get the current time and set alarm after 10 seconds from current time
-        //so here we get
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.SECOND, 5);
-//        calendar.set(Calendar.MINUTE, 0);
-//        calendar.set(Calendar.HOUR_OF_DAY, 0);
-//        System.out.println(calendar.getTimeInMillis());
-//        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 0, pendingIntent);
+    public void setAlarm(int hour, int minute) {
 
         SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
