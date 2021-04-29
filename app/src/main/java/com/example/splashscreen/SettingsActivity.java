@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Switch;
 
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.DialogFragment;
 
 public class SettingsActivity extends LinkingFunctions {
 
@@ -39,5 +40,9 @@ public class SettingsActivity extends LinkingFunctions {
             }
         });
 
+    }
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePicker(this);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 }

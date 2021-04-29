@@ -70,6 +70,22 @@
         app:layout_constraintStart_toStartOf="@id/guideline_center_right"
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
 
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="22sp"
+        android:autoSizeMinTextSize="8sp"
+        android:onClick="showTimePickerDialog"
+        android:text="set notification time"
+        android:textSize="22sp"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
+
 
     <!-- START GUIDELINES CODE-->
     <androidx.constraintlayout.widget.Guideline

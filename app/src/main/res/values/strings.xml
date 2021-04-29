@@ -1,6 +1,8 @@
 <resources>
     <string name="notifaction_state">ON</string>
     <string name="notifaction">notification</string>
+    <string name="hour">hour</string>
+    <string name="minute">minute</string>
     <string name="app_name">D.A.M.N.</string>
     <string name="logo">logo</string>
     <string name="app_name_title_bar">Name</string>

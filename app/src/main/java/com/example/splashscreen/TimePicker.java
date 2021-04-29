@@ -1,27 +1,22 @@
 package com.example.splashscreen;
 
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
+import android.app.Dialog;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Menu;
+import android.text.format.DateFormat;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class SplashActivity extends AppCompatActivity {
+public class TimePicker extends DialogFragment
+        implements TimePickerDialog.OnTimeSetListener {
 
     //used for register alarm manager
     private PendingIntent pendingIntent;
@@ -29,24 +24,34 @@ public class SplashActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     //Callback function for Alarmmanager event
     private BroadcastReceiver mReceiver;
+    private Context context;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-//        RegisterAlarmBroadcast();
-        setAlarm();
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        }, 2500);
+    public TimePicker(Context context){
+        this.context = context;
     }
 
-    public void setAlarm()
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Use the current time as the default values for the picker
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        // Create a new instance of TimePickerDialog and return it
+        return new TimePickerDialog(getActivity(), this, hour, minute,
+                DateFormat.is24HourFormat(getActivity()));
+    }
+
+    @Override
+    public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
+
+        setAlarm(hourOfDay, minute);
+    }
+
+    public void setAlarm(int hour, int minute)
     {
         //Get the current time and set alarm after 10 seconds from current time
-        // so here we get
+        //so here we get
 //        Calendar calendar = Calendar.getInstance();
 //        calendar.setTimeInMillis(System.currentTimeMillis());
 //        calendar.set(Calendar.SECOND, 5);
@@ -55,10 +60,13 @@ public class SplashActivity extends AppCompatActivity {
 //        System.out.println(calendar.getTimeInMillis());
 //        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 0, pendingIntent);
 
-        Context context = this;
-        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(getString(R.string.hour), hour);
+        editor.putInt(getString(R.string.minute), minute);
+        editor.apply();
 
-        alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, Receiver.class);
         intent.setAction("Broadcast");
         pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
@@ -73,14 +81,4 @@ public class SplashActivity extends AppCompatActivity {
         System.out.println(calendar.getTimeInMillis()-System.currentTimeMillis() );
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
     }
-
-    private void RegisterAlarmBroadcast()
-    {
-        pendingIntent = PendingIntent.getBroadcast( this, 1, new Intent(this, Receiver.class),0 );
-        alarmManager = (AlarmManager)(this.getSystemService( Context.ALARM_SERVICE ));
-    }
-
-
-
-
 }
