@@ -25,14 +25,17 @@
 
         <activity
             android:name=".Example_practice"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_example_practice"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PracticeActivityStartScreen"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_practice_start_screen"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PracticeDone"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_practice_done"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
@@ -80,6 +83,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <receiver android:name=".Receiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

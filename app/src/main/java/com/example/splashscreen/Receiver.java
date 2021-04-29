@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -15,13 +16,20 @@ public class Receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         System.out.println("WHOOP WHOOP");
-        makeNotification(context);
+
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.notifaction), Context.MODE_PRIVATE);
+        Boolean notificationState = sharedPref.getBoolean(context.getString(R.string.notifaction_state), true);
+        if(notificationState) {
+            makeNotification(context);
+        } else {
+            System.out.println("alarm is canceled");
+        }
     }
 
     public void makeNotification(Context context){
-        PendingIntent pendingIntent = PendingIntent.getService(context, 0,
-                new Intent(context, MainActivity.class),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent i = new Intent(context, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i,0);
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "1")
@@ -49,7 +57,8 @@ public class Receiver extends BroadcastReceiver {
             channel.setDescription(description);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
-            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            NotificationManager notificationManager = (NotificationManager) context
+                    .getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(channel);
         }
     }
