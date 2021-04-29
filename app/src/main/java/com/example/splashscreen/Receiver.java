@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -15,7 +16,14 @@ public class Receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         System.out.println("WHOOP WHOOP");
-        makeNotification(context);
+
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.notifaction), Context.MODE_PRIVATE);
+        Boolean notificationState = sharedPref.getBoolean(context.getString(R.string.notifaction_state), true);
+        if(notificationState) {
+            makeNotification(context);
+        } else {
+            System.out.println("alarm is canceled");
+        }
     }
 
     public void makeNotification(Context context){

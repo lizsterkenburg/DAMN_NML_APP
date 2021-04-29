@@ -64,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
         // Set the alarm to start at 21:32 PM
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
         calendar.set(Calendar.MINUTE, 35);
         calendar.set(Calendar.SECOND, 0);
         System.out.println(calendar.getTimeInMillis()-System.currentTimeMillis() );
