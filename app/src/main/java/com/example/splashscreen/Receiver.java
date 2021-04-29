@@ -19,9 +19,9 @@ public class Receiver extends BroadcastReceiver {
     }
 
     public void makeNotification(Context context){
-        PendingIntent pendingIntent = PendingIntent.getService(context, 0,
-                new Intent(context, MainActivity.class),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent i = new Intent(context, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i,0);
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "1")
@@ -49,7 +49,8 @@ public class Receiver extends BroadcastReceiver {
             channel.setDescription(description);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
-            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            NotificationManager notificationManager = (NotificationManager) context
+                    .getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(channel);
         }
     }

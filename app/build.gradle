@@ -43,6 +43,8 @@ android {
 }
 
 dependencies {
+    //noinspection GradleCompatible
+    implementation "com.android.support:support-compat:28.0.0"
     implementation platform('com.google.cloud:libraries-bom:19.2.1')
     implementation 'com.google.cloud:google-cloud-language'
     implementation 'androidx.appcompat:appcompat:1.2.0'
