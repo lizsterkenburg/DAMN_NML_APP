@@ -82,5 +82,8 @@
         Then press the microphone and speak the sentence out loud. </string>
     <string name="start_practice">Start practice</string>
     <string name="see_example">See example</string>
+    <string name="notifications">Notifications</string>
+    <string name="notification_time">Notification time:</string>
+    <string name="change_notification_time">Change notification time</string>
 
 </resources>

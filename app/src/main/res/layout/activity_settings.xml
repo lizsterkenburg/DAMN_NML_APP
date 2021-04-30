@@ -15,6 +15,8 @@
         android:autoSizeMaxTextSize="28sp"
         android:autoSizeMinTextSize="10sp"
         android:autoSizeTextType="uniform"
+        android:textColor="@color/teal_700"
+
         android:background="@drawable/bubble_3_crop"
         android:gravity="center"
         android:paddingLeft="20dp"
@@ -47,10 +49,10 @@
         android:id="@+id/textView6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Notifications"
+        android:text="@string/notifications"
         android:textSize="22sp"
         android:autoSizeMaxTextSize="24sp"
-        android:autoSizeMinTextSize="18sp"
+        android:autoSizeMinTextSize="8sp"
         android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
         app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
@@ -70,27 +72,43 @@
         app:layout_constraintStart_toStartOf="@id/guideline_center_right"
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
 
-    <Button
-        android:id="@+id/button6"
+    <TextView
+        android:id="@+id/notificationTime"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="22sp"
-        android:autoSizeMinTextSize="8sp"
-        android:onClick="showTimePickerDialog"
-        android:text="notification time"
         android:textSize="22sp"
-        app:backgroundTint="@color/teal_200"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeTextType="uniform"
+        android:text="@string/notification_time"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
         app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
 
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="18sp"
+        android:autoSizeMinTextSize="8sp"
+        android:onClick="showTimePickerDialog"
+        android:text="@string/change_notification_time"
+        android:textSize="18sp"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7" />
+
     <TextView
         android:id="@+id/alarm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Notifications"
+        android:text="@string/notifications"
         android:textSize="22sp"
         android:autoSizeMaxTextSize="24sp"
         android:autoSizeMinTextSize="18sp"
@@ -129,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.47" />
+        app:layout_constraintGuide_percent="0.57" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left_left"

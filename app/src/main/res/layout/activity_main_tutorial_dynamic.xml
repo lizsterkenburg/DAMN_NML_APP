@@ -20,6 +20,8 @@
         android:autoSizeMaxTextSize="28sp"
         android:autoSizeMinTextSize="10sp"
         android:autoSizeTextType="uniform"
+        android:textColor="@color/teal_700"
+
         android:background="@drawable/bubble_3_crop"
         android:gravity="center"
         android:paddingLeft="20dp"
@@ -52,8 +54,6 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
 
 
-
-
     <TextView
         android:id="@+id/textViewExerciseComplete"
         android:layout_width="0dp"
@@ -63,6 +63,10 @@
         android:autoSizeTextType="uniform"
         android:background="@drawable/bg_completed"
         android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
         android:text="@string/today_s_practice_has_yet_to_be_completed"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
