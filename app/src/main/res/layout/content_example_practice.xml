@@ -68,10 +68,9 @@
         android:background="@drawable/bg_completed"
         android:gravity="center"
         android:paddingLeft="5dp"
-        android:paddingTop="5dp"
         android:paddingRight="5dp"
-
         android:paddingBottom="5dp"
+
         android:text="@string/example_text"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
@@ -86,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:backgroundTint="@color/teal_200"
-        android:onClick="toPractice"
+        android:onClick="toPrime"
         android:textSize="22sp"
         android:autoSizeMaxTextSize="22sp"
         android:autoSizeMinTextSize="10sp"
