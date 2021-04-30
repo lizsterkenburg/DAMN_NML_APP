@@ -25,7 +25,7 @@ public class MainActivity extends LinkingFunctions {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataStorer dataStorer = new DataStorer();
-        setContentView(R.layout.activity_main_tutorial_dynamic);
+        setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().hide();
 
