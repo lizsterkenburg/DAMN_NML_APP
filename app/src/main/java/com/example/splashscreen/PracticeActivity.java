@@ -59,10 +59,11 @@ public class PracticeActivity extends LinkingFunctions {
         String soundName;
         if (Math.random() > 0.5) {
             soundName = getSound("active");
+
         } else {
             soundName = getSound("passive");
         }
-
+        System.out.println("practice "+soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
         String verb_text = "Verb: " + verb;
@@ -142,7 +143,7 @@ public class PracticeActivity extends LinkingFunctions {
 
             System.out.println(counter);
             // TODO fill in real number of trials for mail sending
-            if(counter==5){
+            if(counter % 5 == 0){
                 System.out.println(context.getFileStreamPath(filename));
                 sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
 
