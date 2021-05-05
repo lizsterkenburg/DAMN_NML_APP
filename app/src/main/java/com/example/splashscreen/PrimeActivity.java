@@ -31,6 +31,8 @@ public class PrimeActivity extends LinkingFunctions {
     private TextView verbPrime;
     private DataStorer dataStorer;
     private Context context;
+    private Handler handlerTransition;
+    private MediaPlayer player;
     private static final int I = 1;
 
     @Override
@@ -63,12 +65,12 @@ public class PrimeActivity extends LinkingFunctions {
 
         // play sound corresponding to image
         int sound_id = context.getResources().getIdentifier(soundName, "raw", context.getPackageName());
-        MediaPlayer player = MediaPlayer.create(context, sound_id);
+        player = MediaPlayer.create(context, sound_id);
         player.setOnCompletionListener(new OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 try {
-                    Handler handlerTransition = new Handler();
+                    handlerTransition = new Handler();
                     handlerTransition.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -92,7 +94,18 @@ public class PrimeActivity extends LinkingFunctions {
             }
         }, 1000);
     }
+    @Override
+    public void onBackPressed() {
+        System.out.println("cancel");
+        player.stop();
+//        if(handlerTransition!=null){
+//            handlerTransition.removeCallbacksAndMessages(null);
+//        } else {
+//            handlerTransition = null;
+//        }
 
+        super.onBackPressed();
+    }
     private Drawable getImage(String base) {
         if (base.contains("act")) {
             base = base.replace("_act", "");

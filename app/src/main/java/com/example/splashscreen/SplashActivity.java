@@ -21,6 +21,7 @@ public class SplashActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     //Callback function for Alarmmanager event
     private BroadcastReceiver mReceiver;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,19 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 //        RegisterAlarmBroadcast();
         setAlarm();
-        Handler handler = new Handler();
+        handler = new Handler();
         handler.postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }, 2500);
+    }
+    @Override
+    public void onBackPressed() {
+        System.out.println("cancel");
+        if(handler!=null){
+            handler.removeCallbacksAndMessages(null);
+        }
+        super.onBackPressed();
     }
 
     public void setAlarm()
