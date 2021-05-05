@@ -1,4 +1,5 @@
 <resources>
+    <string name="first_practice">first_practice</string>
     <string name="notifaction_state">ON</string>
     <string name="notifaction">notification</string>
     <string name="hour">hour</string>

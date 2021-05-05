@@ -1,7 +1,11 @@
 package com.example.splashscreen;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -53,6 +57,27 @@ public class MainActivity extends LinkingFunctions {
             //complete += new String(Character.toChars(2705));
         }
         tv1.setText(complete);
+
+
+    }
+    @Override
+    public void toPracticeStartExplanation(View v) {
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        if (sharedPref.getBoolean(getString(R.string.first_practice),true)){
+            editor.putBoolean(getString(R.string.first_practice), false);
+            editor.apply();
+            Intent i = new Intent(this, HowToPlayActivity.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        } else {
+            Intent i =  new Intent(this,PracticeActivityStartScreen.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+        }
+
+
 
     }
 }

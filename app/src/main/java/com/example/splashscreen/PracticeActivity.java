@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class PracticeActivity extends LinkingFunctions {
     private ImageView speechButton;
     private ImageView test;
-//    private EditText speechText;
     private DataStorer dataStorer;
     private TextView verbTest;
     private Context context;
