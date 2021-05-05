@@ -27,47 +27,58 @@
             android:name=".Example_practice"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_example_practice"
+            android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PracticeActivityStartScreen"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:label="@string/title_activity_practice_start_screen"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PracticeDone"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_practice_done"
+            android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".PrimeActivity"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".LoadBetweenTestAndPrime"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".LoadBetweenPrimeAndTest"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".AchievementsActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".HowToPlayActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".HelpActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".PracticeActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".SettingsActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
@@ -76,6 +87,7 @@
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
