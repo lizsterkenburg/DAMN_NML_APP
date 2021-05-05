@@ -29,7 +29,8 @@
         android:text="                          "
         tools:layout_editor_absoluteX="58dp"
         tools:layout_editor_absoluteY="528dp"
-        android:background="@drawable/bg_mic"
+        android:background="@drawable/colored_background"
+
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
         app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
         app:layout_constraintHorizontal_bias="0.5"

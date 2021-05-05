@@ -27,8 +27,8 @@ public class MainActivity extends LinkingFunctions {
         super.onCreate(savedInstanceState);
         DataStorer dataStorer = new DataStorer();
         setContentView(R.layout.activity_main);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-        getSupportActionBar().hide();
+//        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+//        getSupportActionBar().hide();
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");

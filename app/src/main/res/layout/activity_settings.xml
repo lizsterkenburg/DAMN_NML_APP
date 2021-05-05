@@ -5,8 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
-    <include layout="@layout/titlebar_basic_layout"/>
 
+
+    <include
+        layout="@layout/titlebar_basic_layout"
+        tools:layout_editor_absoluteX="-27dp"
+        tools:layout_editor_absoluteY="-43dp" />
 
     <TextView
         android:id="@+id/homeMessage"
@@ -97,7 +101,8 @@
         android:onClick="showTimePickerDialog"
         android:text="@string/change_notification_time"
         android:textSize="18sp"
-        app:backgroundTint="@color/teal_200"
+        android:background="@drawable/colored_background"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
