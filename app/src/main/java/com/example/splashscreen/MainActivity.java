@@ -15,14 +15,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-
 public class MainActivity extends LinkingFunctions {
 
     public static boolean exerciseDone;
     public TextView tv1;
     private String complete = "";
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -48,36 +45,34 @@ public class MainActivity extends LinkingFunctions {
         System.out.println(counter);
         // TODO fill in real number of trials for mail sending
         tv1 = (TextView) findViewById(R.id.textViewExerciseComplete);
-        if(counter==21) {
+        if (counter == 21) {
             complete = "Today's practice has been completed. ";
             //complete += new String(Character.toChars(2B1C));
-        }
-        else {
+        } else {
             complete += "Today's practice has not yet been completed.";
             //complete += new String(Character.toChars(2705));
         }
         tv1.setText(complete);
-
-
     }
+
     @Override
     public void toPracticeStartExplanation(View v) {
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        if (sharedPref.getBoolean(getString(R.string.first_practice),true)){
+        if (sharedPref.getBoolean(getString(R.string.first_practice), true)) {
+
             editor.putBoolean(getString(R.string.first_practice), false);
             editor.apply();
+
             Intent i = new Intent(this, HowToPlayActivity.class);
             startActivity(i);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         } else {
-            Intent i =  new Intent(this,PracticeActivityStartScreen.class);
+            Intent i = new Intent(this, PracticeActivityStartScreen.class);
             startActivity(i);
-            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
-
-
-
     }
+
 }

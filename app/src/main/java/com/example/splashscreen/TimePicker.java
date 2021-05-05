@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -45,6 +46,7 @@ public class TimePicker extends DialogFragment
     @Override
     public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
         setAlarm(hourOfDay, minute);
+        toSettings();
     }
 
     public void setAlarm(int hour, int minute) {
@@ -69,5 +71,9 @@ public class TimePicker extends DialogFragment
         calendar.set(Calendar.SECOND, 0);
         System.out.println(calendar.getTimeInMillis()-System.currentTimeMillis() );
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
+    }
+    public void toSettings(){
+        Intent i = new Intent(context, SettingsActivity.class);
+        startActivity(i);
     }
 }

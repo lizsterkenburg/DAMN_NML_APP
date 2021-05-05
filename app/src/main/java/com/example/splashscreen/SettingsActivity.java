@@ -28,7 +28,10 @@ public class SettingsActivity extends LinkingFunctions {
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         Boolean notificationState = sharedPref.getBoolean(getString(R.string.notifaction_state), true);
 
-        alarm.setText(sharedPref.getInt(getString(R.string.hour),20) + ":" + sharedPref.getInt(getString(R.string.minute),0));
+        int hourLength = (sharedPref.getInt(getString(R.string.hour),20) + "").length();
+        int minute_length = (sharedPref.getInt(getString(R.string.minute), 20) + "").length();
+        alarm.setText(((hourLength<2) ? "0" : "" ) + sharedPref.getInt(getString(R.string.hour),20) + ":" +
+                      ((minute_length<2) ? "0" : "") + sharedPref.getInt(getString(R.string.minute),0));
 
         if(notificationState) {
             switch1.setChecked(true);
