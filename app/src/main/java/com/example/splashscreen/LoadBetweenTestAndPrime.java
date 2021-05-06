@@ -17,7 +17,7 @@ public class LoadBetweenTestAndPrime extends AppCompatActivity {
         handler.postDelayed(() -> {
             startActivity(new Intent(LoadBetweenTestAndPrime.this, PrimeActivity.class));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        }, 1500);
+        }, 1500 + (int)(Math.random() * 500));
     }
     @Override
     public void onBackPressed() {

@@ -30,6 +30,7 @@ public class PracticeActivity extends LinkingFunctions {
     private TextView verbTest;
     private Context context;
     private SendMail sendMail;
+    private Handler handler;
     private static final int I = 1;
 
     @Override
@@ -44,9 +45,22 @@ public class PracticeActivity extends LinkingFunctions {
         verbTest = findViewById(R.id.verb_test);
         sendMail = new SendMail();
 
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        }, 12000);
+
         speechButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(handler!=null){
+                    handler.removeCallbacksAndMessages(null);
+                }
                 Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "speech to text");
@@ -70,6 +84,14 @@ public class PracticeActivity extends LinkingFunctions {
 
         // set image corresponding to sound
         test.setImageDrawable(getImage(soundName));
+    }
+    @Override
+    public void onBackPressed() {
+        System.out.println("cancel");
+        if(handler!=null){
+            handler.removeCallbacksAndMessages(null);
+        }
+        super.onBackPressed();
     }
 
     private Drawable getImage(String base) {

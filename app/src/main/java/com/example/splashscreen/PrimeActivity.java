@@ -60,7 +60,7 @@ public class PrimeActivity extends LinkingFunctions {
         System.out.println(soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
-        verbPrime.setText("Verb: " + verb);
+        verbPrime.setText("Verb: to " + verb);
         prime.setImageDrawable(getImage(soundName));
 
         // play sound corresponding to image
