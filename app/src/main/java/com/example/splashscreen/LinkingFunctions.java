@@ -24,11 +24,6 @@ public class LinkingFunctions extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
-    public void toAchievements(View v){
-        Intent i = new Intent(this, AchievementsActivity.class);
-        startActivity(i);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
 
     public void toHTP(View v){
         Intent i = new Intent(this, HowToPlayActivity.class);

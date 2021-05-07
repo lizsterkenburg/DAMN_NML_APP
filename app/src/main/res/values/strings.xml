@@ -86,5 +86,9 @@
     <string name="notifications">Notifications</string>
     <string name="notification_time">Notification time:</string>
     <string name="change_notification_time">Change notification time</string>
+    <string name="like">Like</string>
+    <string name="title_activity_help_expandable">HelpExpandable</string>
+    <string name="teeeeeeeeeest">teeeeeeeeeest</string>
+    <string name="finish_code_placeholder"> end code placeholder</string>
 
 </resources>

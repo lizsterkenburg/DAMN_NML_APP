@@ -22,6 +22,7 @@
             android:autoSizeMaxTextSize="28sp"
             android:autoSizeMinTextSize="10sp"
             android:autoSizeTextType="uniform"
+            android:textColor="@color/teal_700"
             android:background="@drawable/bubble_3_crop"
             android:gravity="center"
             android:paddingLeft="20dp"
@@ -53,22 +54,23 @@
             app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
 
 
-
-            <Button
-                android:id="@+id/checkAchievements"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:onClick="toAchievements"
-                android:text="Check out your achievements here"
-                android:textSize="22sp"
-                android:background="@drawable/colored_background"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
-                app:layout_constraintEnd_toEndOf="@id/guideline_right"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/guideline_left"
-                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
-
+        <TextView
+            android:id="@+id/specialCode"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_completed"
+            android:gravity="center"
+            android:text="@string/finish_code_placeholder"
+            android:textSize="22sp"
+            android:autoSizeMaxTextSize="22sp"
+            android:autoSizeMinTextSize="10sp"
+            android:textColor="@color/teal_700"
+            android:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
 
 
             <Button
