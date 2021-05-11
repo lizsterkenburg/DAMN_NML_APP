@@ -21,6 +21,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
         <activity
+            android:name=".Example_practice3"
+            android:label="@string/title_activity_example_practice3"
+            android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
+        <activity
+            android:name=".Sound_check"
+            android:label="@string/title_activity_sound_check"
+            android:theme="@style/Theme.SplashScreen.NoActionBar" />
+        <activity
+            android:name=".Example_practice2"
+            android:label="@string/title_activity_example_practice2"
+            android:theme="@style/Theme.SplashScreen.NoActionBar" />
+        <activity
             android:name=".Example_practice"
             android:label="@string/title_activity_example_practice"
             android:noHistory="true"

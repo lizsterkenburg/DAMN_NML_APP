@@ -71,4 +71,24 @@ public class LinkingFunctions extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 
+    public void toSoundCheck(View v){
+        Intent i =  new Intent(this,Sound_check.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+
+    public void toExtendedExample(View v){
+        Intent i =  new Intent(this,Example_practice2.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+
+    public void toFirstTimePractice(View v){
+        Intent i =  new Intent(this,Example_practice3.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+
+
+
 }

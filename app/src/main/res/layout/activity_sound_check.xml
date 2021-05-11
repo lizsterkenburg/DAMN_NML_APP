@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LinkingFunctions">
+
+
+        <include
+            android:id="@+id/include3"
+            layout="@layout/titlebar_basic_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-44dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/homeMessage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="28sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/teal_700"
+                android:background="@drawable/bubble_3_crop"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="25dp"
+                android:text="@string/sound_check"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/guideline_left_left"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+            <!--        app:layout_constraintDimensionRatio="3:1"
+                    android:background="@drawable/bg_home_message"
+
+        -->
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/logo_damn"
+                tools:layout_editor_absoluteY="66dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
+                app:layout_constraintEnd_toEndOf="@id/guideline_left_left"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_top" />
+
+
+            <!--        android:autoSizeMaxTextSize="20sp"-->
+            <!--        android:autoSizeMinTextSize="6sp"-->
+            <!--        android:autoSizeTextType="uniform"-->
+
+
+            <TextView
+                android:id="@+id/textView433"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_completed"
+
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+
+                android:scrollbars="vertical"
+                android:text="@string/please_check_if_the_volume_of_your_phone_is_on_press_the_button_volume_check_below_if_you_hear_a_sound_you_are_ready_to_start"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"
+                app:layout_constraintVertical_bias="0.023"
+                tools:targetApi="o" />
+
+            <Button
+                android:id="@+id/sound_check"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:autoSizeMaxTextSize="22sp"
+                android:autoSizeMinTextSize="8sp"
+                android:background="@drawable/colored_background"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                android:text="Volume check"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/textView433" />
+
+            <Button
+                android:id="@+id/toPracticeButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/start_practising"
+                android:autoSizeMaxTextSize="22sp"
+                android:autoSizeMinTextSize="8sp"
+                android:textSize="22sp"
+                android:background="@drawable/colored_background"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/white"
+                android:onClick="toPrime"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                 app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sound_check"/>
+
+          <!--  <Button
+                android:id="@id/start_practice_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="22sp"
+                android:autoSizeMinTextSize="8sp"
+                android:onClick="toPrime"
+                android:text="@string/start_practising"
+                android:textSize="22sp"
+                android:background="@drawable/colored_background"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />-->
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/homeMessage"
+                app:layout_constraintGuide_percent="0.11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_bottom_toolbar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_3"
+                app:layout_constraintGuide_percent="0.26"
+                app:layout_constraintTop_toBottomOf="@+id/homeMessage" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/textViewExerciseComplete"
+                app:layout_constraintGuide_percent="0.28"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_5"
+                app:layout_constraintGuide_percent="0.78"
+                app:layout_constraintTop_toBottomOf="@+id/textViewExerciseComplete" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/practiceButton"
+                app:layout_constraintGuide_percent="0.8"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_7"
+                app:layout_constraintGuide_percent="0.95"
+                app:layout_constraintTop_toBottomOf="@+id/practiceButton" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_bottom_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
+                app:layout_constraintGuide_begin="63dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_very_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.99" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.47" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_left_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.40" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
