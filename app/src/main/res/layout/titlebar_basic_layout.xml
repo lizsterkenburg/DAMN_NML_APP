@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="63dp"
     android:background="#F1F0F0"
     tools:context=".LinkingFunctions">
 
@@ -16,12 +16,13 @@
         android:background="#139187"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+    <!--        app:layout_constraintBottom_toBottomOf="parent"
+-->
 
 
     <TextView
@@ -32,6 +33,7 @@
         android:textColor="#FDFCFC"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +46,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/homebuttonhouse"
         android:onClick="toHome"
+        android:paddingTop="5dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".04"
@@ -55,10 +59,12 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="48dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.955"
+        android:paddingTop="10dp"
+
         android:onClick="toSettings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
