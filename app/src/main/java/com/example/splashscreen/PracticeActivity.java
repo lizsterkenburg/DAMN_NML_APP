@@ -145,7 +145,6 @@ public class PracticeActivity extends LinkingFunctions {
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void onResults(Bundle bundle)
         {
-            verbText.setText("done");
             //getting all the matches
             ArrayList<String> matches = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
