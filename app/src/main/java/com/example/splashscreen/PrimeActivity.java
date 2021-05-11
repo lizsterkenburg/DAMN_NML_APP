@@ -98,11 +98,11 @@ public class PrimeActivity extends LinkingFunctions {
     public void onBackPressed() {
         System.out.println("cancel");
         player.stop();
-//        if(handlerTransition!=null){
-//            handlerTransition.removeCallbacksAndMessages(null);
-//        } else {
-//            handlerTransition = null;
-//        }
+        if(handlerTransition!=null){
+            handlerTransition.removeCallbacksAndMessages(null);
+        } else {
+            handlerTransition = null;
+        }
 
         super.onBackPressed();
     }

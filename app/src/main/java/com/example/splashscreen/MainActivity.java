@@ -1,14 +1,19 @@
 package com.example.splashscreen;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -25,6 +30,7 @@ public class MainActivity extends LinkingFunctions {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkPermission();
         DataStorer dataStorer = new DataStorer();
         setContentView(R.layout.activity_main);
 //        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
@@ -53,6 +59,17 @@ public class MainActivity extends LinkingFunctions {
             //complete += new String(Character.toChars(2705));
         }
         tv1.setText(complete);
+    }
+
+    private void checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)) {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 
     @Override
