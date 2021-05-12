@@ -27,6 +27,8 @@ public class HelpActivity extends LinkingFunctions {
     Button Button4;
     TextView ta5;
     Button Button5;
+    TextView extra;
+    Button extraButton;
     private SharedPreferences sharedPref;
 
     @Override
@@ -57,6 +59,20 @@ public class HelpActivity extends LinkingFunctions {
         Button4 = findViewById(R.id.textViewQ4);
         ta5 = findViewById(R.id.a5);
         Button5 = findViewById(R.id.textViewQ5);
+        extra = findViewById(R.id.explanationA);
+        extraButton = findViewById(R.id.explanationQ);
+
+        extraButton.setOnClickListener(new View.OnClickListener(){
+            boolean visible;
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(tContainer);
+                visible = !visible;
+                extra.setVisibility(visible ? View.VISIBLE: View.GONE);
+
+            }
+        });
 
         Button1.setOnClickListener(new View.OnClickListener(){
             boolean visible;

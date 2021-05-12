@@ -29,12 +29,12 @@
             android:text="                          "
             tools:layout_editor_absoluteX="58dp"
             tools:layout_editor_absoluteY="528dp"
-            android:background="@drawable/colored_background"
+            android:background="@drawable/bg_completed"
 
             app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
-            app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
+            app:layout_constraintEnd_toEndOf="@id/guideline_left_left"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/guideline_left_left"
+            app:layout_constraintStart_toStartOf="@id/guideline_20"
             app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
         <ImageButton
             android:id="@+id/button"
@@ -44,13 +44,63 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_weight="0.12"
+
             android:background="@drawable/mic"
             android:contentDescription="@string/microphone"
             app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
-            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintEnd_toEndOf="@id/guideline_left_left"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintStart_toStartOf="@id/guideline_20"
             app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/arrow"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="268dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
+            app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_left_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
+
+
+        <TextView
+            android:id="@+id/emptyTextForBackgroundOn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="                          "
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="528dp"
+            android:background="@drawable/colored_background"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
+            app:layout_constraintEnd_toEndOf="@id/guideline_80"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_center_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
+        <ImageButton
+            android:id="@+id/buttonOn"
+            android:layout_width="94dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_weight="0.12"
+
+            android:background="@drawable/mic"
+            android:contentDescription="@string/microphone"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
+            app:layout_constraintEnd_toEndOf="@id/guideline_80"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_center_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
+
+
 
         <TextView
             android:id="@+id/textView433"
@@ -135,6 +185,18 @@
 
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_left_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -211,6 +273,7 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
             app:layout_constraintGuide_begin="63dp" />
+
 
 
 

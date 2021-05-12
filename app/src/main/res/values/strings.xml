@@ -106,7 +106,7 @@ Cognitive ageing represents how the functioning of the brain declines in terms o
     <string name="please_check_if_the_volume_of_your_phone_is_on_press_the_button_volume_check_below_if_you_hear_a_sound_you_are_ready_to_start">Please check if the volume of your phone is on. Press the button \'Volume check\' below. If you hear a sound you are ready to start.</string>
     <string name="go_to_sound_check">Go to sound check</string>
     <string name="go_to_short_demo">go to Short demo</string>
-    <string name="mic_explanation">During the practice you will see a microphone button like the one above this text. You have to press this button once and speak. After you spoke a sentence the app will continue to the next exercise. If the app does not continue, try again.</string>
+    <string name="mic_explanation">During the practice you will see a microphone button like the one above this text. When you press this button it becomes green and you can speak. You need to press the button while speaking. If the app does not continue to the next page, try again.</string>
     <string name="title_activity_example_practice3">Example_practice3</string>
     <string name="quick_practice_round">quick practice round</string>
     <string name="placeholder_ex_prac">Placeholder for actual example pratcie of a few rounds</string>
