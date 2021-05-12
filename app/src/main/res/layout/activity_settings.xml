@@ -125,6 +125,37 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5"/>
 
 
+    <TextView
+        android:id="@+id/usernametest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/user_ID"
+        android:textSize="22sp"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_10"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_center_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_9"/>
+
+    <TextView
+        android:id="@+id/usernametestdisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textSize="22sp"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_10"
+        app:layout_constraintEnd_toEndOf="@id/guideline_center_left"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_9"/>
+
+
     <!-- START GUIDELINES CODE-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"

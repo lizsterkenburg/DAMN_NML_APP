@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class Example_practice3 extends AppCompatActivity {
+public class Example_practice3 extends LinkingFunctions {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

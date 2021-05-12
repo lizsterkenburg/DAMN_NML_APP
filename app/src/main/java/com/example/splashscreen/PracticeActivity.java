@@ -182,7 +182,7 @@ public class PracticeActivity extends LinkingFunctions {
                 editor.putStringSet(getString(R.string.used_names), null);
                 editor.apply();
                 System.out.println(context.getFileStreamPath(filename));
-                sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
+                sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
 
                 Intent i = new Intent(context,PracticeDone.class);
                 startActivity(i);

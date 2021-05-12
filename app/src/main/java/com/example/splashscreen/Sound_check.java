@@ -16,10 +16,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 public class Sound_check extends LinkingFunctions {
     Button soundButton;
+    EditText idInput;
+    Button okButton;
     private SharedPreferences sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,17 @@ public class Sound_check extends LinkingFunctions {
             public void onClick(View v) {
                 ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 450);
                 toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,150);
+            }
+        });
+
+        idInput = (EditText) findViewById(R.id.inputFieldUSerID);
+        okButton = (Button) findViewById(R.id.usernameDoneButton);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.user_ID),idInput.getText().toString());
+                editor.apply();
             }
         });
 

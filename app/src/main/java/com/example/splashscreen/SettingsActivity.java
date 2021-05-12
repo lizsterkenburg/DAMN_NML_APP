@@ -14,11 +14,14 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
+import org.w3c.dom.Text;
+
 public class SettingsActivity extends LinkingFunctions {
 
     private Switch switch1;
     private TextView alarm;
     private SharedPreferences sharedPref;
+    private TextView tv;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,10 @@ public class SettingsActivity extends LinkingFunctions {
                 editor.apply();
             }
         });
+
+        String id = sharedPref.getString(getString(R.string.user_ID),"");
+        tv = (TextView) findViewById(R.id.usernametest);
+        tv.setText(id);
 
     }
     @SuppressLint("SetTextI18n")

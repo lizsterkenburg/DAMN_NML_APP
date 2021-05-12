@@ -1,6 +1,7 @@
 package com.example.splashscreen;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.util.Properties;
@@ -24,7 +25,7 @@ public class SendMail {
 
     String email_to = "damn.experiment@gmail.com";
 
-    public void sendMail(String filePath, String name) {
+    public void sendMail(String filePath, String name, Context context) {
         final String username = "damn.experiment";
         final String password = "NMLgroup4";
 
@@ -46,6 +47,8 @@ public class SendMail {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email_to));
+            String user = context.getString(R.string.user_ID);
+            String messageId = "Sent from DAMN App " + user;
             message.setSubject("Sent from DAMN App");
 //            message.setText("Message : the results.");
             BodyPart messageBodyPart = new MimeBodyPart();
@@ -75,6 +78,8 @@ public class SendMail {
             mex.printStackTrace();
         }
     }
+
+
 
     private class SendMailTask extends AsyncTask<Message, String, String> {
         private ProgressDialog progressDialog;

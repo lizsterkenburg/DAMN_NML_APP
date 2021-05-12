@@ -1,4 +1,7 @@
 <resources>
+    <string name="user_ID">Not yet submitted </string>
+
+    <string name="password_prolific">This is the code you need for Prolific: 5997846B</string>
     <string name="used_names">used_names</string>
     <string name="which_logo">which_logo</string>
     <string name="number_of_practices">number_of_practices</string>
@@ -110,5 +113,9 @@ Cognitive ageing represents how the functioning of the brain declines in terms o
     <string name="title_activity_example_practice3">Example_practice3</string>
     <string name="quick_practice_round">quick practice round</string>
     <string name="placeholder_ex_prac">Placeholder for actual example pratcie of a few rounds</string>
+    <string name="hint">TextView</string>
+    <string name="hintProlific">Fill in Prolific User ID</string>
+    <string name="id_explanation">Please enter your prolific user ID below before starting your practice.</string>
+    <string name="username">Username:</string>
 
 </resources>
