@@ -1,6 +1,9 @@
 package com.example.splashscreen;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
@@ -13,16 +16,26 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
-public class Sound_check extends AppCompatActivity {
+public class Sound_check extends LinkingFunctions {
     Button soundButton;
-
+    private SharedPreferences sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound_check);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+
+        ImageView logo = findViewById(R.id.imageView3);
+        if(sharedPref.getString(getString(R.string.which_logo), "None").equals("true")){
+            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
+            logo.setImageDrawable(myDrawable);
+        }
+        else{
+            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
+            logo.setImageDrawable(myDrawable);
+        }
         soundButton = findViewById(R.id.sound_check);
         soundButton.setOnClickListener(new View.OnClickListener() {
             @Override

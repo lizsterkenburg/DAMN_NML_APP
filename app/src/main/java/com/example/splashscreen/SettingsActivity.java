@@ -3,9 +3,11 @@ package com.example.splashscreen;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -37,6 +39,18 @@ public class SettingsActivity extends LinkingFunctions {
             switch1.setChecked(true);
         } else {
             switch1.setChecked(false);
+        }
+
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+
+        ImageView logo = findViewById(R.id.imageView3);
+        if(sharedPref.getString(getString(R.string.which_logo), "None").equals("true")){
+            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
+            logo.setImageDrawable(myDrawable);
+        }
+        else{
+            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
+            logo.setImageDrawable(myDrawable);
         }
 
         switch1.setOnClickListener(new View.OnClickListener() {

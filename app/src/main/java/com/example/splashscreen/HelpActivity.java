@@ -2,12 +2,16 @@ package com.example.splashscreen;
 
 import androidx.annotation.RequiresApi;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HelpActivity extends LinkingFunctions {
@@ -23,11 +27,24 @@ public class HelpActivity extends LinkingFunctions {
     Button Button4;
     TextView ta5;
     Button Button5;
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+
+        ImageView logo = findViewById(R.id.imageView3);
+        if(sharedPref.getString(getString(R.string.which_logo), "None").equals("true")){
+            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
+            logo.setImageDrawable(myDrawable);
+        }
+        else{
+            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
+            logo.setImageDrawable(myDrawable);
+        }
 
         tContainer = findViewById(R.id.transitionContainer);
         ta1 = findViewById(R.id.a1);

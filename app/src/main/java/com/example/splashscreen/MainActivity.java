@@ -28,7 +28,6 @@ public class MainActivity extends LinkingFunctions {
     public TextView tv1;
     private String complete = "";
     private SharedPreferences sharedPref;
-    private ImageView logo;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -36,19 +35,32 @@ public class MainActivity extends LinkingFunctions {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkPermission();
-        logo = (ImageView) findViewById(R.id.logo_home);
-        System.out.println("id");
-        System.out.println(R.id.logo_home);
 
         DataStorer dataStorer = new DataStorer();
         setContentView(R.layout.activity_main);
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-//        getSupportActionBar().hide();
 
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(getString(R.string.number_of_practices), 21);
+        if(sharedPref.getString(getString(R.string.which_logo), "None").equals("None")){
+            if(Math.random() > 0.5){
+                editor.putString(getString(R.string.which_logo), "true");
+            }
+            else{
+                editor.putString(getString(R.string.which_logo), "false");
+            }
+        }
         editor.apply();
+
+        ImageView logo = findViewById(R.id.logo_home);
+        if(sharedPref.getString(getString(R.string.which_logo), "None").equals("true")){
+            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
+            logo.setImageDrawable(myDrawable);
+        }
+        else{
+            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
+            logo.setImageDrawable(myDrawable);
+        }
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
@@ -62,18 +74,6 @@ public class MainActivity extends LinkingFunctions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if(Math.random() > 0.5){
-            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
-            System.out.println(logo);
-            logo.setImageDrawable(myDrawable);
-        }
-        else{
-            System.out.println(logo);
-            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
-            logo.setImageDrawable(myDrawable);
-        }
-
         System.out.println(counter);
         // TODO fill in real number of trials for mail sending
         tv1 = (TextView) findViewById(R.id.textViewExerciseComplete);
