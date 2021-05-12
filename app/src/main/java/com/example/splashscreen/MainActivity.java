@@ -25,6 +25,8 @@ public class MainActivity extends LinkingFunctions {
     public static boolean exerciseDone;
     public TextView tv1;
     private String complete = "";
+    private SharedPreferences sharedPref;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -35,6 +37,11 @@ public class MainActivity extends LinkingFunctions {
         setContentView(R.layout.activity_main);
 //        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 //        getSupportActionBar().hide();
+
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(getString(R.string.number_of_practices), 21);
+        editor.apply();
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
@@ -51,7 +58,7 @@ public class MainActivity extends LinkingFunctions {
         System.out.println(counter);
         // TODO fill in real number of trials for mail sending
         tv1 = (TextView) findViewById(R.id.textViewExerciseComplete);
-        if (counter == 21) {
+        if (counter == sharedPref.getInt(getString(R.string.number_of_practices), 21)) {
             complete = "Today's practice has been completed. ";
             //complete += new String(Character.toChars(2B1C));
         } else {

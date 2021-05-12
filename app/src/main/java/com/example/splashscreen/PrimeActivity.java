@@ -162,6 +162,31 @@ public class PrimeActivity extends LinkingFunctions {
         }
     }
 
+    @Override
+    public void toHome(View v){
+        player.stop();
+        if(handlerTransition!=null){
+            handlerTransition.removeCallbacksAndMessages(null);
+        } else {
+            handlerTransition = null;
+        }
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+    @Override
+    public void toSettings(View v){
+        player.stop();
+        if(handlerTransition!=null){
+            handlerTransition.removeCallbacksAndMessages(null);
+        } else {
+            handlerTransition = null;
+        }
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        if (requestCode == I && resultCode == RESULT_OK) {

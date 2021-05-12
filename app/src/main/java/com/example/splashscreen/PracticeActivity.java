@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -42,6 +43,7 @@ public class PracticeActivity extends LinkingFunctions {
     private SendMail sendMail;
     private Handler handler;
     private SpeechRecognizer mSpeechRecognizer;
+    private SharedPreferences sharedPref;
 
     private static final int I = 1;
 
@@ -61,6 +63,7 @@ public class PracticeActivity extends LinkingFunctions {
         sendMail = new SendMail();
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         mSpeechRecognizer.setRecognitionListener(new recListener());
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
 
         // 12 second timer to give response.
         handler = new Handler();
@@ -164,7 +167,7 @@ public class PracticeActivity extends LinkingFunctions {
 
             System.out.println(counter);
             // TODO fill in real number of trials for mail sending
-            if(counter % 5 == 0){
+            if(counter % sharedPref.getInt(getString(R.string.number_of_practices),21) == 0){
                 System.out.println(context.getFileStreamPath(filename));
                 sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
 
@@ -250,6 +253,25 @@ public class PracticeActivity extends LinkingFunctions {
         } else {
             return "NaN";
         }
+    }
+
+    @Override
+    public void toHome(View v){
+        if(handler!=null){
+            handler.removeCallbacksAndMessages(null);
+        }
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+    @Override
+    public void toSettings(View v){
+        if(handler!=null){
+            handler.removeCallbacksAndMessages(null);
+        }
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
 }

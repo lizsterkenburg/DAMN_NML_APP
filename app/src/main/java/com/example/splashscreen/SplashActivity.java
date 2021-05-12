@@ -74,7 +74,7 @@ public class SplashActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, sharedPref.getInt(getString(R.string.minute),0));
         calendar.set(Calendar.SECOND, 0);
         System.out.println(calendar.getTimeInMillis()-System.currentTimeMillis() );
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 60000 * 60 * 24 * 6, pendingIntent);
     }
 
     private void RegisterAlarmBroadcast()
