@@ -42,7 +42,7 @@
 -->
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/logo_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:srcCompat="@drawable/logo_damn"

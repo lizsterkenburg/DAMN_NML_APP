@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -26,6 +28,7 @@ public class MainActivity extends LinkingFunctions {
     public TextView tv1;
     private String complete = "";
     private SharedPreferences sharedPref;
+    private ImageView logo;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -33,6 +36,10 @@ public class MainActivity extends LinkingFunctions {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkPermission();
+        logo = (ImageView) findViewById(R.id.logo_home);
+        System.out.println("id");
+        System.out.println(R.id.logo_home);
+
         DataStorer dataStorer = new DataStorer();
         setContentView(R.layout.activity_main);
 //        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
@@ -55,10 +62,22 @@ public class MainActivity extends LinkingFunctions {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if(Math.random() > 0.5){
+            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
+            System.out.println(logo);
+            logo.setImageDrawable(myDrawable);
+        }
+        else{
+            System.out.println(logo);
+            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
+            logo.setImageDrawable(myDrawable);
+        }
+
         System.out.println(counter);
         // TODO fill in real number of trials for mail sending
         tv1 = (TextView) findViewById(R.id.textViewExerciseComplete);
-        if (counter == sharedPref.getInt(getString(R.string.number_of_practices), 21)) {
+        if (counter >= sharedPref.getInt(getString(R.string.number_of_practices), 21)) {
             complete = "Today's practice has been completed. ";
             //complete += new String(Character.toChars(2B1C));
         } else {
