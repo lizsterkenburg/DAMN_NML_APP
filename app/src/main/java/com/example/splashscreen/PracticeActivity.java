@@ -29,7 +29,10 @@ import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 //import com.google.cloud.language.v1.Document;
 
@@ -44,6 +47,7 @@ public class PracticeActivity extends LinkingFunctions {
     private Handler handler;
     private SpeechRecognizer mSpeechRecognizer;
     private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
 
     private static final int I = 1;
 
@@ -64,6 +68,7 @@ public class PracticeActivity extends LinkingFunctions {
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         mSpeechRecognizer.setRecognitionListener(new recListener());
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
 
         // 12 second timer to give response.
         handler = new Handler();
@@ -113,6 +118,12 @@ public class PracticeActivity extends LinkingFunctions {
         String verb = words[1];
         String verb_text = "Verb: " + verb;
         verbText.setText(verb_text);
+        String[] verbArray = {verb};
+
+        Set<String> sn = new HashSet<String>(Arrays.asList(verbArray));
+        Set<String> newSet = combineSets(sharedPref.getStringSet(getString(R.string.used_names), null), sn);
+        editor.putStringSet(getString(R.string.used_names), newSet);
+        editor.apply();
 
         // set image corresponding to sound
         test.setImageDrawable(getImage(soundName));
@@ -168,6 +179,8 @@ public class PracticeActivity extends LinkingFunctions {
             System.out.println(counter);
             // TODO fill in real number of trials for mail sending
             if(counter % sharedPref.getInt(getString(R.string.number_of_practices),21) == 0){
+                editor.putStringSet(getString(R.string.used_names), null);
+                editor.apply();
                 System.out.println(context.getFileStreamPath(filename));
                 sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename);
 
@@ -207,6 +220,19 @@ public class PracticeActivity extends LinkingFunctions {
         super.onBackPressed();
     }
 
+    public Set<String> combineSets(Set<String> a, Set<String> b){
+        // Creating an empty set
+        Set<String> mergedSet = new HashSet<String>();
+
+        // add the two sets to be merged
+        // into the new set
+        mergedSet.addAll(a);
+        mergedSet.addAll(b);
+
+        // returning the merged set
+        return mergedSet;
+    }
+
     private Drawable getImage(String base) {
         if (base.contains("act")) {
             base = base.replace("_act", "");
@@ -240,19 +266,35 @@ public class PracticeActivity extends LinkingFunctions {
                     resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * resource_names.size());
-            return resource_names.get(index);
+
         } else if (voice.equals("passive")) {
             for (Field field : fields) {
                 if (field.getName().contains("tra") && field.getName().contains("pass")) {
                     resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * resource_names.size());
-            return resource_names.get(index);
+
         } else {
             return "NaN";
         }
+
+        Set<String> used_names = sharedPref.getStringSet(getString(R.string.used_names), null);
+        System.out.println(used_names);
+        System.out.println(resource_names);
+        ArrayList<String> toRemove = new ArrayList<>();
+        if(used_names!=null) {
+            for (String name : resource_names) {
+                String[] words = name.split("_");
+                String verb = words[1];
+                if (used_names.contains(verb)) {
+                    toRemove.add(name);
+                }
+            }
+        }
+        resource_names.removeAll(toRemove);
+        System.out.println(resource_names);
+        int index = (int) (Math.random() * resource_names.size());
+        return resource_names.get(index);
     }
 
     @Override

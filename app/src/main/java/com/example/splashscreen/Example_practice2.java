@@ -17,6 +17,5 @@ public class Example_practice2 extends LinkingFunctions {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example_practice2);
 
-
     }
 }

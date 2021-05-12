@@ -3,6 +3,7 @@ package com.example.splashscreen;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -23,6 +24,9 @@ import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class PrimeActivity extends LinkingFunctions {
@@ -33,6 +37,7 @@ public class PrimeActivity extends LinkingFunctions {
     private Context context;
     private Handler handlerTransition;
     private MediaPlayer player;
+    private SharedPreferences sharedPref;
     private static final int I = 1;
 
     @Override
@@ -44,6 +49,8 @@ public class PrimeActivity extends LinkingFunctions {
         verbPrime = findViewById(R.id.verb_prime);
 //        speechText = findViewById(R.id.editText);
         dataStorer = new DataStorer();
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
         // randomly select audio and corresponding image
         String soundName = "";
@@ -62,6 +69,14 @@ public class PrimeActivity extends LinkingFunctions {
         String verb = words[1];
         verbPrime.setText("Verb: to " + verb);
         prime.setImageDrawable(getImage(soundName));
+        String[] verbArray = {verb};
+        String[] emptySet = {};
+
+        Set<String> sn = new HashSet<String>(Arrays.asList(verbArray));
+        Set<String> es = new HashSet<String>(Arrays.asList(verbArray));
+        Set<String> newSet = combineSets(sharedPref.getStringSet(getString(R.string.used_names), es), sn);
+        editor.putStringSet(getString(R.string.used_names), newSet);
+        editor.apply();
 
         // play sound corresponding to image
         int sound_id = context.getResources().getIdentifier(soundName, "raw", context.getPackageName());
@@ -106,6 +121,20 @@ public class PrimeActivity extends LinkingFunctions {
 
         super.onBackPressed();
     }
+
+    public Set<String> combineSets(Set<String> a, Set<String> b){
+        // Creating an empty set
+        Set<String> mergedSet = new HashSet<String>();
+
+        // add the two sets to be merged
+        // into the new set
+        mergedSet.addAll(a);
+        mergedSet.addAll(b);
+
+        // returning the merged set
+        return mergedSet;
+    }
+
     private Drawable getImage(String base) {
         if (base.contains("act")) {
             base = base.replace("_act", "");
@@ -131,35 +160,50 @@ public class PrimeActivity extends LinkingFunctions {
 
     private String getSound(String voice) {
         Field[] fields = R.raw.class.getDeclaredFields();
-        ArrayList<String> recource_names = new ArrayList<>();
+        ArrayList<String> resource_names = new ArrayList<>();
 
         if (voice.equals("active")) {
             for (Field field : fields) {
                 if (field.getName().contains("tra") && field.getName().contains("act")) {
-                    recource_names.add(field.getName());
+                    resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * recource_names.size());
-            return recource_names.get(index);
+
         } else if (voice.equals("passive")) {
             for (Field field : fields) {
                 if (field.getName().contains("tra") && field.getName().contains("pass")) {
-                    recource_names.add(field.getName());
+                    resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * recource_names.size());
-            return recource_names.get(index);
         } else if (voice.equals("int")){
             for (Field field : fields) {
                 if (field.getName().contains("int")) {
-                    recource_names.add(field.getName());
+                    resource_names.add(field.getName());
                 }
             }
-            int index = (int) (Math.random() * recource_names.size());
-            return recource_names.get(index);
         } else {
             return "NaN";
         }
+
+
+        Set<String> used_names = sharedPref.getStringSet(getString(R.string.used_names), null);
+        ArrayList<String> toRemove = new ArrayList<>();
+        System.out.println(used_names);
+        System.out.println(resource_names);
+        if(used_names!=null) {
+            for (String name : resource_names) {
+                String[] words = name.split("_");
+                String verb = words[1];
+                if (used_names.contains(verb)) {
+                    toRemove.add(name);
+                }
+            }
+        }
+        resource_names.removeAll(toRemove);
+        System.out.println(resource_names);
+
+        int index = (int) (Math.random() * resource_names.size());
+        return resource_names.get(index);
     }
 
     @Override
