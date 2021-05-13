@@ -1,5 +1,6 @@
 package com.example.splashscreen;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,7 +21,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 public class Sound_check extends LinkingFunctions {
-    Button soundButton;
+    private Button soundButton;
+    private Button baselineButton;
+    private Button practiceButton;
     private SharedPreferences sharedPref;
 
     @Override
@@ -28,6 +31,7 @@ public class Sound_check extends LinkingFunctions {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound_check);
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPref.edit();
 
         ImageView logo = findViewById(R.id.imageView3);
         if(sharedPref.getString(getString(R.string.which_logo), "None").equals("true")){
@@ -44,6 +48,30 @@ public class Sound_check extends LinkingFunctions {
             public void onClick(View v) {
                 ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 450);
                 toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,150);
+            }
+        });
+
+        practiceButton = findViewById(R.id.practiceButton);
+        practiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString(getString(R.string.which_practice), "practice");
+                editor.apply();
+                Intent i = new Intent(getApplicationContext(), PrimeActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        baselineButton = findViewById(R.id.baselineButton);
+        baselineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString(getString(R.string.which_practice), "baseline");
+                editor.apply();
+                Intent i = new Intent(getApplicationContext(), PracticeActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
 

@@ -84,7 +84,7 @@ public class PracticeActivity extends LinkingFunctions {
         speechButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(handler!=null){
+                if (handler != null) {
                     handler.removeCallbacksAndMessages(null);
                 }
                 switch (motionEvent.getAction()) {
@@ -113,7 +113,7 @@ public class PracticeActivity extends LinkingFunctions {
         } else {
             soundName = getSound("passive");
         }
-        System.out.println("practice "+soundName);
+        System.out.println("practice " + soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
         String verb_text = "Verb: " + verb;
@@ -130,35 +130,33 @@ public class PracticeActivity extends LinkingFunctions {
     }
 
     // recognitionListener
-    class recListener implements RecognitionListener
-    {
-        public void onReadyForSpeech(Bundle params)
-        {
+    class recListener implements RecognitionListener {
+        public void onReadyForSpeech(Bundle params) {
             System.out.println("ready");
         }
-        public void onBeginningOfSpeech()
-        {
+
+        public void onBeginningOfSpeech() {
             System.out.println("beginning");
         }
-        public void onRmsChanged(float rmsdB)
-        {
+
+        public void onRmsChanged(float rmsdB) {
 
         }
-        public void onBufferReceived(byte[] buffer)
-        {
+
+        public void onBufferReceived(byte[] buffer) {
 
         }
-        public void onEndOfSpeech()
-        {
+
+        public void onEndOfSpeech() {
             System.out.println("end");
         }
-        public void onError(int error)
-        {
+
+        public void onError(int error) {
             System.out.println(error);
         }
+
         @RequiresApi(api = Build.VERSION_CODES.O)
-        public void onResults(Bundle bundle)
-        {
+        public void onResults(Bundle bundle) {
             //getting all the matches
             ArrayList<String> matches = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
@@ -178,34 +176,38 @@ public class PracticeActivity extends LinkingFunctions {
 
             System.out.println(counter);
             // TODO fill in real number of trials for mail sending
-            if(counter % sharedPref.getInt(getString(R.string.number_of_practices),21) == 0){
+            if (counter % sharedPref.getInt(getString(R.string.number_of_practices), 21) == 0) {
                 editor.putStringSet(getString(R.string.used_names), null);
                 editor.apply();
                 System.out.println(context.getFileStreamPath(filename));
                 sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
 
-                Intent i = new Intent(context,PracticeDone.class);
+                Intent i = new Intent(context, PracticeDone.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
-            else {
+            } else {
                 Handler handlerTransition = new Handler();
                 handlerTransition.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
+                        Intent i;
+                        if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice")) {
+                            i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
+                        } else {
+                            i = new Intent(PracticeActivity.this, LoadBetweenPrimeAndTest.class);
+                        }
                         startActivity(i);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     }
                 }, 1000);
             }
         }
-        public void onPartialResults(Bundle partialResults)
-        {
+
+        public void onPartialResults(Bundle partialResults) {
 
         }
-        public void onEvent(int eventType, Bundle params)
-        {
+
+        public void onEvent(int eventType, Bundle params) {
 
         }
     }
@@ -214,13 +216,13 @@ public class PracticeActivity extends LinkingFunctions {
     @Override
     public void onBackPressed() {
         System.out.println("cancel");
-        if(handler!=null){
+        if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
         super.onBackPressed();
     }
 
-    public Set<String> combineSets(Set<String> a, Set<String> b){
+    public Set<String> combineSets(Set<String> a, Set<String> b) {
         // Creating an empty set
         Set<String> mergedSet = new HashSet<String>();
 
@@ -282,7 +284,7 @@ public class PracticeActivity extends LinkingFunctions {
         System.out.println(used_names);
         System.out.println(resource_names);
         ArrayList<String> toRemove = new ArrayList<>();
-        if(used_names!=null) {
+        if (used_names != null) {
             for (String name : resource_names) {
                 String[] words = name.split("_");
                 String verb = words[1];
@@ -298,17 +300,18 @@ public class PracticeActivity extends LinkingFunctions {
     }
 
     @Override
-    public void toHome(View v){
-        if(handler!=null){
+    public void toHome(View v) {
+        if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
+
     @Override
-    public void toSettings(View v){
-        if(handler!=null){
+    public void toSettings(View v) {
+        if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
         Intent i = new Intent(this, SettingsActivity.class);
