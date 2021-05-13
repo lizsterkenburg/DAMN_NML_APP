@@ -21,9 +21,8 @@ import android.widget.ImageView;
 
 public class Sound_check extends LinkingFunctions {
     Button soundButton;
-    EditText idInput;
-    Button okButton;
     private SharedPreferences sharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +47,7 @@ public class Sound_check extends LinkingFunctions {
             }
         });
 
-        idInput = (EditText) findViewById(R.id.inputFieldUSerID);
-        okButton = (Button) findViewById(R.id.usernameDoneButton);
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.user_ID),idInput.getText().toString());
-                editor.apply();
-            }
-        });
+
 
 
     }

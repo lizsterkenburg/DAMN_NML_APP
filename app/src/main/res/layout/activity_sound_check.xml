@@ -105,57 +105,23 @@
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@+id/textView433" />
 
-        <TextView
-            android:id="@+id/userIDField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:autoSizeMaxTextSize="22sp"
-            android:autoSizeMinTextSize="8sp"
-            android:padding="5dp"
-            android:gravity="center"
-            android:text="@string/id_explanation"
-            android:background="@drawable/bg_completed"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="@id/guideline_right"
-            app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/sound_check"
-            tools:layout_editor_absoluteX="138dp"
-            tools:layout_editor_absoluteY="470dp" />
-
-        <EditText
-            android:id="@+id/inputFieldUSerID"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hintProlific"
-            android:background="@drawable/bg_completed"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:gravity="center"
-            android:inputType="textNoSuggestions"
-            app:layout_constraintEnd_toEndOf="@id/guideline_right"
-            app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/userIDField" />
-
 
         <Button
-            android:id="@+id/usernameDoneButton"
+            android:id="@+id/baselineButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="128dp"
             android:autoSizeMaxTextSize="22sp"
             android:autoSizeMinTextSize="8sp"
             android:background="@drawable/colored_background"
-            android:gravity="center"
-            android:text="Submit Username"
+            android:padding="15dp"
+            android:text="@string/practice_without_example"
             android:textColor="@color/white"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/inputFieldUSerID" />
+            app:layout_constraintTop_toBottomOf="@id/sound_check" />
 
         <Button
             android:id="@+id/toPracticeButton"
@@ -169,14 +135,15 @@
             android:paddingTop="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="15dp"
-            android:text="@string/start_practising"
+            android:text="@string/practice_with_example"
             android:textColor="@color/white"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/usernameDoneButton" />
-
+            app:layout_constraintTop_toBottomOf="@id/baselineButton"
+            app:layout_constraintVertical_bias="0.359" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_left"
@@ -275,6 +242,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.40" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

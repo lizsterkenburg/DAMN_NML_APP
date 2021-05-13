@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class SplashActivity extends AppCompatActivity {
+    private SharedPreferences sharedPref;
 
     //used for register alarm manager
     private PendingIntent pendingIntent;
@@ -28,11 +29,20 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 //        RegisterAlarmBroadcast();
+        sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+
         setAlarm();
         handler = new Handler();
         handler.postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            if(!sharedPref.getString(getString(R.string.user_ID),"not submitted").equals("not submitted") ) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+            else {
+                startActivity(new Intent(SplashActivity.this, ID_check.class));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+
         }, 2500);
     }
     @Override
