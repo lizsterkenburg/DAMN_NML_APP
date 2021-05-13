@@ -6,8 +6,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +32,15 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 //        RegisterAlarmBroadcast();
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
+        ImageView logo = findViewById(R.id.imageView6);
+        if(sharedPref.getString(getString(R.string.which_logo), "None").equals("true")){
+            Drawable myDrawable = getResources().getDrawable(R.drawable.logo_damn);
+            logo.setImageDrawable(myDrawable);
+        }
+        else{
+            Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
+            logo.setImageDrawable(myDrawable);
+        }
 
         setAlarm();
         handler = new Handler();
