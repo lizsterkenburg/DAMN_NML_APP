@@ -53,9 +53,15 @@ public class SendMail {
 
 
             sharedPref = context.getSharedPreferences(context.getString(R.string.notifaction), Context.MODE_PRIVATE);
-
+            Boolean logo = sharedPref.getBoolean("notification",true); //true = logo, false = owl
+            String logoName = "";
+            if(logo) {
+                logoName = "logo";
+            } else {
+                logoName = "owl";
+            }
             String user = sharedPref.getString(context.getString(R.string.user_ID),"not submitted");
-            String messageId = "Sent from DAMN App " + user;
+            String messageId = "Sent from DAMN App by " + user + " - Logo = " + logoName;
             message.setSubject(messageId);
 //            message.setText("Message : the results.");
             BodyPart messageBodyPart = new MimeBodyPart();

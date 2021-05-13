@@ -265,6 +265,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/question_5"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
