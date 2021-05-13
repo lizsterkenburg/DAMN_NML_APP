@@ -117,5 +117,6 @@ Cognitive ageing represents how the functioning of the brain declines in terms o
     <string name="hintProlific">Fill in Prolific User ID</string>
     <string name="id_explanation">Please enter your prolific user ID below before starting your practice.</string>
     <string name="username">Username:</string>
+    <string name="title_activity_i_d_check">ID_check</string>
 
 </resources>

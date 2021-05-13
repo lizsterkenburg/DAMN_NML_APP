@@ -2,6 +2,7 @@ package com.example.splashscreen;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import java.util.Properties;
@@ -24,6 +25,8 @@ import javax.mail.internet.MimeMultipart;
 public class SendMail {
 
     String email_to = "damn.experiment@gmail.com";
+    private SharedPreferences sharedPref;
+
 
     public void sendMail(String filePath, String name, Context context) {
         final String username = "damn.experiment";
@@ -47,9 +50,13 @@ public class SendMail {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email_to));
-            String user = context.getString(R.string.user_ID);
+
+
+            sharedPref = context.getSharedPreferences(context.getString(R.string.notifaction), Context.MODE_PRIVATE);
+
+            String user = sharedPref.getString(context.getString(R.string.user_ID),"not submitted");
             String messageId = "Sent from DAMN App " + user;
-            message.setSubject("Sent from DAMN App");
+            message.setSubject(messageId);
 //            message.setText("Message : the results.");
             BodyPart messageBodyPart = new MimeBodyPart();
 
