@@ -51,7 +51,7 @@ public class Sound_check extends LinkingFunctions {
             }
         });
 
-        practiceButton = findViewById(R.id.practiceButton);
+        practiceButton = (Button)  findViewById(R.id.testNewNameToActualPractice);
         practiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class Sound_check extends LinkingFunctions {
             }
         });
 
-        baselineButton = findViewById(R.id.baselineButton);
+        baselineButton = (Button) findViewById(R.id.baselineButton);
         baselineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,10 +74,6 @@ public class Sound_check extends LinkingFunctions {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
-
-
-
-
     }
 
     public void toPrime(View v){

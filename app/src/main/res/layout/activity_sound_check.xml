@@ -120,7 +120,7 @@
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/sound_check" />
 
-        <Button
+        <!--<Button
             android:id="@+id/toPracticeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -128,7 +128,24 @@
             android:autoSizeMinTextSize="8sp"
             android:background="@drawable/colored_background"
             android:padding="25dp"
-            android:text="practice with example"
+            android:text="@string/practice_with_example_sound_check"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/baselineButton"
+            app:layout_constraintVertical_bias="0.359" />-->
+        <Button
+            android:id="@+id/testNewNameToActualPractice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoSizeMaxTextSize="22sp"
+            android:autoSizeMinTextSize="8sp"
+            android:background="@drawable/colored_background"
+            android:padding="25dp"
+            android:text="@string/practice_with_example_sound_check"
             android:textColor="@color/white"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -120,5 +120,9 @@ Cognitive ageing represents how the functioning of the brain declines in terms o
     <string name="title_activity_i_d_check">ID_check</string>
     <string name="practice_without_example">Practice without example</string>
     <string name="practice_with_example">practice_with_example</string>
+    <string name="message_baseline_done">You completed the exercises without examples. Please continue and do the exercises with example now.</string>
+    <string name="questions_go_to_help_here">Questions? go to help here</string>
+    <string name="go_to_practice_with_examples">Go to practice with examples</string>
+    <string name="practice_with_example_sound_check">practice with example</string>
 
 </resources>
