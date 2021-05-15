@@ -34,13 +34,13 @@ public class MainActivity extends LinkingFunctions {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        int number_trials = 21;
         DataStorer dataStorer = new DataStorer();
         setContentView(R.layout.activity_main);
 
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(getString(R.string.number_of_practices), 1);//21);
+        editor.putInt(getString(R.string.number_of_practices), number_trials);//1);//21);
         if(sharedPref.getString(getString(R.string.which_logo), "None").equals("None")){
             if(Math.random() > 0.5){
                 editor.putString(getString(R.string.which_logo), "true");

@@ -61,8 +61,8 @@ public class SendMail {
                 logoName = "owl";
             }
             String user = sharedPref.getString(context.getString(R.string.user_ID),"not submitted");
-            String session = sharedPref.getString(context.getString(R.string.which_practice), "null");
-            String messageId = "Sent from DAMN App by " + user + " - Logo = " + logoName + " - session = "+ session;
+            String sessionType = sharedPref.getString(context.getString(R.string.which_practice), "null");
+            String messageId = "Sent from DAMN App by " + user + " - Logo = " + logoName + " - session = "+ sessionType;
             message.setSubject(messageId);
 //            message.setText("Message : the results.");
             BodyPart messageBodyPart = new MimeBodyPart();
