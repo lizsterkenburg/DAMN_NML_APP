@@ -76,7 +76,7 @@ public class MainActivity extends LinkingFunctions {
         System.out.println(counter);
         // TODO fill in real number of trials for mail sending
         tv1 = (TextView) findViewById(R.id.textViewExerciseComplete);
-        if (counter >= sharedPref.getInt(getString(R.string.number_of_practices), 21)) {
+        if (counter >= 21) {
             complete = "Today's practice has been completed. ";
             //complete += new String(Character.toChars(2B1C));
         } else {
