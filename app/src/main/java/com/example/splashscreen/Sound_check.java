@@ -56,6 +56,7 @@ public class Sound_check extends LinkingFunctions {
             @Override
             public void onClick(View v) {
                 editor.putString(getString(R.string.which_practice), "practice");
+                editor.putInt(getString(R.string.number_of_practices), 21);
                 editor.apply();
                 Intent i = new Intent(getApplicationContext(), PrimeActivity.class);
                 startActivity(i);
@@ -68,6 +69,7 @@ public class Sound_check extends LinkingFunctions {
             @Override
             public void onClick(View v) {
                 editor.putString(getString(R.string.which_practice), "baseline");
+                editor.putInt(getString(R.string.number_of_practices), 21);
                 editor.apply();
                 Intent i = new Intent(getApplicationContext(), PracticeActivity.class);
                 startActivity(i);

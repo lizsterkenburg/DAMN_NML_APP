@@ -1,4 +1,5 @@
 <resources>
+    <string name="baseline_toggle">baseline_toggle</string>
     <string name="user_ID">Not yet submitted</string>
     <string name="which_practice">which practice</string>
     <string name="password_prolific">This is the code you need for Prolific: 5997846B</string>

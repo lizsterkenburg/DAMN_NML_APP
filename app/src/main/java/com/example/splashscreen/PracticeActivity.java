@@ -75,7 +75,12 @@ public class PracticeActivity extends LinkingFunctions {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
+                Intent i;
+                if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
+                    i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
+                } else {
+                    i = new Intent(PracticeActivity.this, LoadBetweenPrimeAndTest.class);
+                }
                 startActivity(i);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
@@ -106,12 +111,26 @@ public class PracticeActivity extends LinkingFunctions {
         });
 
         // randomly select audio and corresponding image
-        String soundName;
-        if (Math.random() > 0.5) {
-            soundName = getSound("active");
 
+        String soundName = "";
+        String toggle = sharedPref.getString(getString(R.string.baseline_toggle), "null");
+        if (toggle.equals("null")){
+            editor.putString(getString(R.string.baseline_toggle), "int");
+            editor.apply();
+        }
+        System.out.println("toggle " + toggle);
+        if (toggle.equals("int")){
+            editor.putString(getString(R.string.baseline_toggle), "tra");
+            editor.apply();
+            soundName = getSound("int");
         } else {
-            soundName = getSound("passive");
+            editor.putString(getString(R.string.baseline_toggle), "int");
+            editor.apply();
+            if (Math.random() > 0.5) {
+                soundName = getSound("active");
+            } else {
+                soundName = getSound("passive");
+            }
         }
         System.out.println("practice " + soundName);
         String[] words = soundName.split("_");
@@ -119,9 +138,11 @@ public class PracticeActivity extends LinkingFunctions {
         String verb_text = "Verb: " + verb;
         verbText.setText(verb_text);
         String[] verbArray = {verb};
+        String[] emptyArray = {};
 
         Set<String> sn = new HashSet<String>(Arrays.asList(verbArray));
-        Set<String> newSet = combineSets(sharedPref.getStringSet(getString(R.string.used_names), null), sn);
+        Set<String> es = new HashSet<String>(Arrays.asList(emptyArray));
+        Set<String> newSet = combineSets(sharedPref.getStringSet(getString(R.string.used_names), es), sn);
         editor.putStringSet(getString(R.string.used_names), newSet);
         editor.apply();
 
@@ -166,6 +187,9 @@ public class PracticeActivity extends LinkingFunctions {
             DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
 
             String filename = "Results analysis on " + date.format(now);
+            if (sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
+                filename = "example";
+            }
             String message = date2.format(now) + matches.get(0).toString();
             int counter = 0;
             try {
@@ -175,23 +199,34 @@ public class PracticeActivity extends LinkingFunctions {
             }
 
             System.out.println(counter);
-            // TODO fill in real number of trials for mail sending
             if (counter % sharedPref.getInt(getString(R.string.number_of_practices), 21) == 0) {
                 editor.putStringSet(getString(R.string.used_names), null);
                 editor.apply();
-                System.out.println(context.getFileStreamPath(filename));
-                sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
+                if (!sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
+                    System.out.println(context.getFileStreamPath(filename));
+                    sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
+                    if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice")) {
+                        Intent i = new Intent(context, PracticeDone.class);
+                        startActivity(i);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    } else {
+                        Intent i = new Intent(context, Example_practice3.class);
+                        startActivity(i);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    }
+                } else {
+                    Intent i = new Intent(context, MainActivity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                }
 
-                Intent i = new Intent(context, PracticeDone.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             } else {
                 Handler handlerTransition = new Handler();
                 handlerTransition.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         Intent i;
-                        if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice")) {
+                        if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
                             i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
                         } else {
                             i = new Intent(PracticeActivity.this, LoadBetweenPrimeAndTest.class);
@@ -275,16 +310,22 @@ public class PracticeActivity extends LinkingFunctions {
                     resource_names.add(field.getName());
                 }
             }
-
+        } else if (voice.equals("int")){
+            for (Field field : fields) {
+                if (field.getName().contains("int")) {
+                    resource_names.add(field.getName());
+                }
+            }
         } else {
             return "NaN";
         }
 
+
         Set<String> used_names = sharedPref.getStringSet(getString(R.string.used_names), null);
+        ArrayList<String> toRemove = new ArrayList<>();
         System.out.println(used_names);
         System.out.println(resource_names);
-        ArrayList<String> toRemove = new ArrayList<>();
-        if (used_names != null) {
+        if(used_names!=null) {
             for (String name : resource_names) {
                 String[] words = name.split("_");
                 String verb = words[1];
@@ -295,6 +336,7 @@ public class PracticeActivity extends LinkingFunctions {
         }
         resource_names.removeAll(toRemove);
         System.out.println(resource_names);
+
         int index = (int) (Math.random() * resource_names.size());
         return resource_names.get(index);
     }
