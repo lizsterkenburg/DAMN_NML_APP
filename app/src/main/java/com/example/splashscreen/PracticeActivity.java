@@ -114,12 +114,12 @@ public class PracticeActivity extends LinkingFunctions {
 
         String soundName = "";
         String toggle = sharedPref.getString(getString(R.string.baseline_toggle), "null");
-        if (toggle.equals("null")){
+        if (toggle.equals("null")) {
             editor.putString(getString(R.string.baseline_toggle), "int");
             editor.apply();
         }
         System.out.println("toggle " + toggle);
-        if (toggle.equals("int")){
+        if (toggle.equals("int")) {
             editor.putString(getString(R.string.baseline_toggle), "tra");
             editor.apply();
             soundName = getSound("int");
@@ -186,7 +186,7 @@ public class PracticeActivity extends LinkingFunctions {
             DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
             DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
 
-            String filename = "Results analysis on " + date.format(now);
+            String filename = "Results analysis on " + sharedPref.getString(getString(R.string.which_practice),"null") + " " + date.format(now);
             if (sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
                 filename = "example";
             }
@@ -206,10 +206,24 @@ public class PracticeActivity extends LinkingFunctions {
                     System.out.println(context.getFileStreamPath(filename));
                     sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
                     if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice")) {
-                        Intent i = new Intent(context, PracticeDone.class);
+                        Intent i = new Intent(context, Example_practice3.class);
                         startActivity(i);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     } else {
+                        LocalDateTime now_completed = LocalDateTime.now();
+                        DateTimeFormatter date_completed = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
+
+                        if (sharedPref.getString(getString(R.string.date_completed), "null").equals("null")) {
+                            editor.putString(getString(R.string.date_completed), date_completed.format(now_completed));
+                        } else {
+                            String[] last_date = sharedPref.getString(getString(R.string.date_completed), "null").split("-");
+                            String[] current_data = date_completed.format(now_completed).split("-");
+                            if (Integer.parseInt(current_data[2]) - Integer.parseInt(last_date[2]) == 0) {
+                                Intent i = new Intent(context, PracticeDone.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            }
+                        }
                         Intent i = new Intent(context, Example_practice3.class);
                         startActivity(i);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -310,7 +324,7 @@ public class PracticeActivity extends LinkingFunctions {
                     resource_names.add(field.getName());
                 }
             }
-        } else if (voice.equals("int")){
+        } else if (voice.equals("int")) {
             for (Field field : fields) {
                 if (field.getName().contains("int")) {
                     resource_names.add(field.getName());
@@ -325,7 +339,7 @@ public class PracticeActivity extends LinkingFunctions {
         ArrayList<String> toRemove = new ArrayList<>();
         System.out.println(used_names);
         System.out.println(resource_names);
-        if(used_names!=null) {
+        if (used_names != null) {
             for (String name : resource_names) {
                 String[] words = name.split("_");
                 String verb = words[1];

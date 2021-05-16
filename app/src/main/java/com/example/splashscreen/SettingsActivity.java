@@ -34,7 +34,8 @@ public class SettingsActivity extends LinkingFunctions {
         Boolean notificationState = sharedPref.getBoolean(getString(R.string.notifaction_state), true);
 
         int hourLength = (sharedPref.getInt(getString(R.string.hour),20) + "").length();
-        int minute_length = (sharedPref.getInt(getString(R.string.minute), 20) + "").length();
+        int minute_length = (sharedPref.getInt(getString(R.string.minute), 0) + "").length();
+        System.out.println(minute_length);
         alarm.setText(((hourLength<2) ? "0" : "" ) + sharedPref.getInt(getString(R.string.hour),20) + ":" +
                       ((minute_length<2) ? "0" : "") + sharedPref.getInt(getString(R.string.minute),0));
 

@@ -29,6 +29,7 @@
         <activity
             android:name=".ID_check"
             android:label="@string/title_activity_i_d_check"
+            android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
         <activity
             android:name=".Example_practice3"

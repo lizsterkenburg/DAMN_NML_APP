@@ -65,7 +65,7 @@ public class MainActivity extends LinkingFunctions {
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
         DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
 
-        String filename = "Results analysis on " + date.format(now);
+        String filename = "Results analysis on "+ "baseline " + date.format(now);
 
         int counter = 0;
         try {
