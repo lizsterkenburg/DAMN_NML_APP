@@ -34,7 +34,7 @@ public class Example_practice2 extends LinkingFunctions {
         quickPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putInt(getString(R.string.number_of_practices), 6);
+                editor.putInt(getString(R.string.number_of_practices), 2);//6);
                 editor.putString(getString(R.string.which_practice), "example");
                 editor.apply();
                 Intent i = new Intent(getApplicationContext(), PrimeActivity.class);

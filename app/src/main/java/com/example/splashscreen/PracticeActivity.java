@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -33,6 +34,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //import com.google.cloud.language.v1.Document;
 
@@ -180,6 +184,7 @@ public class PracticeActivity extends LinkingFunctions {
         public void onResults(Bundle bundle) {
             //getting all the matches
             ArrayList<String> matches = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            String amIDone = "no";
 
             // actual code
             LocalDateTime now = LocalDateTime.now();
@@ -198,8 +203,10 @@ public class PracticeActivity extends LinkingFunctions {
                 e.printStackTrace();
             }
 
+
+            //temp var to make fim work
             System.out.println(counter);
-            if (counter % sharedPref.getInt(getString(R.string.number_of_practices), 21) == 0) {
+            if (counter % sharedPref.getInt(getString(R.string.number_of_practices), 3) == 0) {
                 editor.putStringSet(getString(R.string.used_names), null);
                 editor.apply();
                 if (!sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
@@ -209,24 +216,38 @@ public class PracticeActivity extends LinkingFunctions {
                         Intent i = new Intent(context, Example_practice3.class);
                         startActivity(i);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    } else {
+                    } else { //if not practice then its baseline
                         LocalDateTime now_completed = LocalDateTime.now();
                         DateTimeFormatter date_completed = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
-
+                        System.out.println("\n\n SHAREDPREF: " + sharedPref.getString(getString(R.string.date_completed),"null"));
                         if (sharedPref.getString(getString(R.string.date_completed), "null").equals("null")) {
                             editor.putString(getString(R.string.date_completed), date_completed.format(now_completed));
+                            editor.apply();
+                            System.out.println("\n\n setting the SHAREDPREF: " );
+                            System.out.println("\n\n SHAREDPREF is now: " + sharedPref.getString(getString(R.string.date_completed),"null"));
+
+
                         } else {
                             String[] last_date = sharedPref.getString(getString(R.string.date_completed), "null").split("-");
                             String[] current_data = date_completed.format(now_completed).split("-");
-                            if (Integer.parseInt(current_data[2]) - Integer.parseInt(last_date[2]) == 0) {
-                                Intent i = new Intent(context, PracticeDone.class);
-                                startActivity(i);
-                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                            }
+
+                            System.out.println("in the else, gonna set porlific code");
+
+                            //if ((Integer.parseUnsignedInt(current_data[2]) - Integer.parseUnsignedInt(last_date[2])) == 0) {
+                            amIDone = "yes";
+                            Intent i = new Intent(context, PracticeDone.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            //}
                         }
-                        Intent i = new Intent(context, Example_practice3.class);
-                        startActivity(i);
-                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        if(amIDone.equals("no")){
+                            System.out.println("in the other page setting. only do this first time pls");
+
+                            Intent i = new Intent(context, BaselineEndScreen1.class);//Example_practice3.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        }
+
                     }
                 } else {
                     Intent i = new Intent(context, MainActivity.class);

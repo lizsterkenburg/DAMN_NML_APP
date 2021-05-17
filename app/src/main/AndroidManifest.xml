@@ -27,10 +27,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
         <activity
+            android:name=".BaselineEndScreen1"
+            android:label="@string/title_activity_baseline_end_screen1"
+            android:noHistory="true"
+            android:theme="@style/Theme.SplashScreen.NoActionBar"/>
+        <activity
             android:name=".ID_check"
             android:label="@string/title_activity_i_d_check"
             android:noHistory="true"
-            android:theme="@style/Theme.SplashScreen.NoActionBar"></activity>
+            android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
             android:name=".Example_practice3"
             android:label="@string/title_activity_example_practice3"
