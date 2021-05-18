@@ -54,14 +54,22 @@ public class PrimeActivity extends LinkingFunctions {
 
         // randomly select audio and corresponding image
         String soundName = "";
-        if (Math.random() < 0.25){
+        if(sharedPref.getString(getString(R.string.which_practice), "null").equals("baseline") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
             soundName = getSound("int");
         } else {
-            if (Math.random() > 0.5) {
-                soundName = getSound("active");
+            if (Math.random() < 0.33) {
+                editor.putString(getString(R.string.int_trans), "int");
+                soundName = getSound("int");
+
             } else {
-                soundName = getSound("passive");
+                editor.putString(getString(R.string.int_trans), "trans");
+                if (Math.random() > 0.5) {
+                    soundName = getSound("active");
+                } else {
+                    soundName = getSound("passive");
+                }
             }
+            editor.apply();
         }
 
         System.out.println(soundName);

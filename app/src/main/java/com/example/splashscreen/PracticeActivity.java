@@ -117,23 +117,21 @@ public class PracticeActivity extends LinkingFunctions {
         // randomly select audio and corresponding image
 
         String soundName = "";
-        String toggle = sharedPref.getString(getString(R.string.baseline_toggle), "null");
-        if (toggle.equals("null")) {
-            editor.putString(getString(R.string.baseline_toggle), "int");
-            editor.apply();
-        }
-        System.out.println("toggle " + toggle);
-        if (toggle.equals("int")) {
-            editor.putString(getString(R.string.baseline_toggle), "tra");
-            editor.apply();
-            soundName = getSound("int");
-        } else {
-            editor.putString(getString(R.string.baseline_toggle), "int");
-            editor.apply();
+        if(sharedPref.getString(getString(R.string.which_practice), "null").equals("baseline") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
             if (Math.random() > 0.5) {
                 soundName = getSound("active");
             } else {
                 soundName = getSound("passive");
+            }
+        } else {
+            if (sharedPref.getString(getString(R.string.int_trans),"null").equals("int")) {
+                soundName = getSound("int");
+            } else {
+                if (Math.random() > 0.5) {
+                    soundName = getSound("active");
+                } else {
+                    soundName = getSound("passive");
+                }
             }
         }
         System.out.println("practice " + soundName);

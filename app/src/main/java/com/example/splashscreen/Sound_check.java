@@ -25,6 +25,8 @@ public class Sound_check extends LinkingFunctions {
     private Button baselineButton;
     private Button practiceButton;
     private SharedPreferences sharedPref;
+    private final int NUMBER_OF_PRACTICES_BASELINE = 21;
+    private final int NUMBER_OF_PRACTICES_PRACTICE = 53;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class Sound_check extends LinkingFunctions {
             @Override
             public void onClick(View v) {
                 editor.putString(getString(R.string.which_practice), "practice");
-                editor.putInt(getString(R.string.number_of_practices), 4);
+                editor.putInt(getString(R.string.number_of_practices), NUMBER_OF_PRACTICES_PRACTICE);
                 editor.apply();
                 Intent i = new Intent(getApplicationContext(), PrimeActivity.class);
                 startActivity(i);
@@ -69,7 +71,7 @@ public class Sound_check extends LinkingFunctions {
             @Override
             public void onClick(View v) {
                 editor.putString(getString(R.string.which_practice), "baseline");
-                editor.putInt(getString(R.string.number_of_practices), 4);
+                editor.putInt(getString(R.string.number_of_practices), NUMBER_OF_PRACTICES_BASELINE);
                 editor.apply();
                 Intent i = new Intent(getApplicationContext(), PracticeActivity.class);
                 startActivity(i);

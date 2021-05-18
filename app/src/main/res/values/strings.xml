@@ -1,4 +1,5 @@
 <resources>
+    <string name="int_trans">int_trans</string>
     <string name="date_completed">date_completed</string>
     <string name="baseline_toggle">baseline_toggle</string>
     <string name="user_ID">Not yet submitted</string>
