@@ -53,9 +53,9 @@ public class SendMail {
 
 
             sharedPref = context.getSharedPreferences(context.getString(R.string.notifaction), Context.MODE_PRIVATE);
-            Boolean logo = sharedPref.getBoolean("notification",true); //true = logo, false = owl
+            String logo = sharedPref.getString(context.getString(R.string.which_practice),"none"); //true = logo, false = owl
             String logoName = "";
-            if(logo) {
+            if(logo.equals("true")) {
                 logoName = "logo";
             } else {
                 logoName = "owl";
