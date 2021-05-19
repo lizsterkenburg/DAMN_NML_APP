@@ -112,10 +112,7 @@
                 android:background="@drawable/colored_background"
                 android:gravity="center"
                 android:padding="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:textColor="@color/white"
-
                 android:text="@string/question_1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

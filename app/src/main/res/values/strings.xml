@@ -51,9 +51,9 @@
     <string name="placeholder_one_week_complete_award">One week complete award</string>
     <string name="placeholder_streak_days">1 day(s) streak </string>
     <string name="these_are_your_achievements">These are your achievements!</string>
-    <string name="question_1"> <b>How many exercises do I have to do every day?</b> </string>
-    <string name="answer_1">Every day you have to complete a practice sessions which consists of 20 exercises.</string>
-    <string name="question_2">What happens when I forget to practice one day?</string>
+    <string name="question_1"> How many exercises do I have to do every day? </string>
+    <string name="answer_1">On day 1 you have to do practice 1 and 2. 6 days after the first practice you should do practice one. Practice 1 consists of 40 exercises and practice 2 of 52. </string>
+    <string name="question_2">What happens when I forget to practice after 6 days?</string>
     <string name="answer_2">We prefer you practice every day, but if you miss one day that is okay. Just continue practising again tomorrow."</string>
 
     <string name="question_3">Do I need internet to use this app?</string>
@@ -61,9 +61,9 @@
     <string name="question_4">I accidentally closed the app during practice, what should I do now? </string>
     <string name="answer_4">Click on the practice button in the home screen. You automatically continue where you left off.</string>
     <string name="question_5">I do not like notifications. Can I turn them off?</string>
-    <string name="answer_5">You can turn them off, but then you have to remind that you have to practice each day. </string>
+    <string name="answer_5">You can turn them off, but then you have to remind yourself that you have to practice. </string>
     <string name="question_6">Does the app store my personal data?</string>
-    <string name="answer_6">Add picture example drive</string>
+    <string name="answer_6">The app does not store your personal data. Only your Prolific ID which is anonymous. </string>
 
     <string name="contact_us_at_damn_experiment_gmail_com">Contact us at: DAMN.experiment@gmail.com</string>
     <string name="today_s_practice_has_yet_to_be_completed">Today\'s practice has not yet been completed.		 </string>
@@ -123,12 +123,12 @@
     <string name="id_explanation">Please enter your prolific user ID below before starting your practice.</string>
     <string name="username">Username:</string>
     <string name="title_activity_i_d_check">ID_check</string>
-    <string name="practice_without_example">Practice without example</string>
+    <string name="practice_without_example">Practice 1</string>
     <string name="practice_with_example">practice_with_example</string>
     <string name="message_baseline_done">You completed the exercises. Please remember to do the exercise without examples 6 days from now.</string>
     <string name="questions_go_to_help_here">Questions? go to help here</string>
     <string name="go_to_practice_with_examples">Go to practice with examples</string>
-    <string name="practice_with_example_sound_check">practice with example</string>
+    <string name="practice_with_example_sound_check">Practice 2</string>
     <string name="volume_check">Volume check</string>
     <string name="you_completed_the_practice_without_examples_please_practice_with_examples_now">You completed practice session 1. Please complete practice session 2 now.</string>
     <string name="title_activity_baseline_end_screen1">BaselineEndScreen1</string>
