@@ -124,7 +124,7 @@ public class PracticeActivity extends LinkingFunctions {
         System.out.println("practice " + soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
-        String verb_text = "Verb: " + verb;
+        String verb_text = "Verb: to " + verb;
         verbText.setText(verb_text);
         String[] verbArray = {verb};
         String[] emptyArray = {};
