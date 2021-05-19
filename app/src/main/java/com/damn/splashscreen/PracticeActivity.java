@@ -1,17 +1,13 @@
-package com.example.splashscreen;
+package com.damn.splashscreen;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -26,7 +22,6 @@ import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,9 +29,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 //import com.google.cloud.language.v1.Document;
 
@@ -79,12 +71,7 @@ public class PracticeActivity extends LinkingFunctions {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i;
-                if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
-                    i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
-                } else {
-                    i = new Intent(PracticeActivity.this, LoadBetweenPrimeAndTest.class);
-                }
+                Intent i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
@@ -205,8 +192,6 @@ public class PracticeActivity extends LinkingFunctions {
             //temp var to make fim work
             System.out.println(counter);
             if (counter % sharedPref.getInt(getString(R.string.number_of_practices), 3) == 0) {
-                editor.putStringSet(getString(R.string.used_names), null);
-                editor.apply();
                 if (!sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
                     System.out.println(context.getFileStreamPath(filename));
                     sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
@@ -258,19 +243,13 @@ public class PracticeActivity extends LinkingFunctions {
                 handlerTransition.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent i;
-                        if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
-                            i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
-                        } else {
-                            i = new Intent(PracticeActivity.this, LoadBetweenPrimeAndTest.class);
-                        }
+                        Intent i = new Intent(PracticeActivity.this, LoadBetweenTestAndPrime.class);
                         startActivity(i);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     }
                 }, 1000);
             }
         }
-
         public void onPartialResults(Bundle partialResults) {
 
         }
@@ -367,7 +346,9 @@ public class PracticeActivity extends LinkingFunctions {
                 }
             }
         }
-        resource_names.removeAll(toRemove);
+        if (!(toRemove.size() == resource_names.size())){
+            resource_names.removeAll(toRemove);
+        }
         System.out.println(resource_names);
 
         int index = (int) (Math.random() * resource_names.size());

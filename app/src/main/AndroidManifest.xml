@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.splashscreen">
+    package="com.damn.splashscreen">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -27,89 +27,89 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
         <activity
-            android:name=".BaselineEndScreen1"
+            android:name="com.damn.splashscreen.BaselineEndScreen1"
             android:label="@string/title_activity_baseline_end_screen1"
             android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar"/>
         <activity
-            android:name=".ID_check"
+            android:name="com.damn.splashscreen.ID_check"
             android:label="@string/title_activity_i_d_check"
             android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".Example_practice3"
+            android:name="com.damn.splashscreen.Example_practice3"
             android:label="@string/title_activity_example_practice3"
             android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".Sound_check"
+            android:name="com.damn.splashscreen.Sound_check"
             android:label="@string/title_activity_sound_check"
             android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".Example_practice2"
+            android:name="com.damn.splashscreen.Example_practice2"
             android:label="@string/title_activity_example_practice2"
             android:noHistory="true"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".Example_practice"
+            android:name="com.damn.splashscreen.Example_practice"
             android:label="@string/title_activity_example_practice"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".PracticeActivityStartScreen"
+            android:name="com.damn.splashscreen.PracticeActivityStartScreen"
             android:label="@string/title_activity_practice_start_screen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".PracticeDone"
+            android:name="com.damn.splashscreen.PracticeDone"
             android:label="@string/title_activity_practice_done"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SplashScreen.NoActionBar" />
         <activity
-            android:name=".PrimeActivity"
+            android:name="com.damn.splashscreen.PrimeActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".LoadBetweenTestAndPrime"
+            android:name="com.damn.splashscreen.LoadBetweenTestAndPrime"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".LoadBetweenPrimeAndTest"
+            android:name="com.damn.splashscreen.LoadBetweenPrimeAndTest"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".HowToPlayActivity"
+            android:name="com.damn.splashscreen.HowToPlayActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".HelpActivity"
+            android:name="com.damn.splashscreen.HelpActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".PracticeActivity"
+            android:name="com.damn.splashscreen.PracticeActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.damn.splashscreen.SettingsActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.damn.splashscreen.MainActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.damn.splashscreen.SplashActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -121,7 +121,7 @@
         </activity>
 
         <receiver
-            android:name=".Receiver"
+            android:name="com.damn.splashscreen.Receiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

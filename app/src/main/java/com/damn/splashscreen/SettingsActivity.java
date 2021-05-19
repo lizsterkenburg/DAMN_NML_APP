@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+package com.damn.splashscreen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
-
-import org.w3c.dom.Text;
 
 public class SettingsActivity extends LinkingFunctions {
 

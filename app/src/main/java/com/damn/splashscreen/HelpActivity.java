@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+package com.damn.splashscreen;
 
 import androidx.annotation.RequiresApi;
 

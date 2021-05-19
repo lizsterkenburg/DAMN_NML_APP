@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+package com.damn.splashscreen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,15 +9,8 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 public class Sound_check extends LinkingFunctions {
@@ -57,6 +50,7 @@ public class Sound_check extends LinkingFunctions {
         practiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putStringSet(getString(R.string.used_names), null);
                 editor.putString(getString(R.string.which_practice), "practice");
                 editor.putInt(getString(R.string.number_of_practices), NUMBER_OF_PRACTICES_PRACTICE);
                 editor.apply();
@@ -70,10 +64,11 @@ public class Sound_check extends LinkingFunctions {
         baselineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putStringSet(getString(R.string.used_names), null);
                 editor.putString(getString(R.string.which_practice), "baseline");
                 editor.putInt(getString(R.string.number_of_practices), NUMBER_OF_PRACTICES_BASELINE);
                 editor.apply();
-                Intent i = new Intent(getApplicationContext(), PracticeActivity.class);
+                Intent i = new Intent(getApplicationContext(), PrimeActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }

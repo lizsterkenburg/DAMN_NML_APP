@@ -67,7 +67,7 @@
             android:paddingBottom="5dp"
 
             android:scrollbars="vertical"
-            android:text="@string/first_you_will_see_a_picture_and_a_verb_the_picture_will_be_described_to_you_by_using_the_given_verb_listen_very_carefully_a_short_pause_will_follow_next_you_see_another_picture_and_another_verb_this_time_you_will_have_to_describe_it_yourself_using_the_given_verb_to_describe_the_picture_you_have_to_click_on_the_loudspeaker_and_then_you_can_start_speaking_your_voice_will_be_detected_automatically"
+            android:text="@string/htp_text"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_4"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"

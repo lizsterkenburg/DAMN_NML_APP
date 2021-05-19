@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+package com.damn.splashscreen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,22 +7,15 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.speech.RecognizerIntent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -57,7 +50,7 @@ public class PrimeActivity extends LinkingFunctions {
         if(sharedPref.getString(getString(R.string.which_practice), "null").equals("baseline") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
             soundName = getSound("int");
         } else {
-            if (Math.random() < 0.33) {
+            if (Math.random() < 0.30) {
                 editor.putString(getString(R.string.int_trans), "int");
                 soundName = getSound("int");
 
@@ -207,7 +200,10 @@ public class PrimeActivity extends LinkingFunctions {
                 }
             }
         }
-        resource_names.removeAll(toRemove);
+        if (!(toRemove.size() == resource_names.size())){
+            resource_names.removeAll(toRemove);
+        }
+
         System.out.println(resource_names);
 
         int index = (int) (Math.random() * resource_names.size());
