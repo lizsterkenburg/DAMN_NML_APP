@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:id="@+id/doneMessage"
+            android:id="@+id/doing_great"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autoSizeMaxTextSize="28sp"
@@ -28,7 +28,7 @@
             android:paddingLeft="35dp"
             android:paddingRight="10dp"
             android:paddingBottom="15dp"
-            android:text="@string/you_are_done"
+            android:text="@string/you_are_dooing_great"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"

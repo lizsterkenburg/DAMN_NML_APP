@@ -1,4 +1,13 @@
 <resources>
+    <string name="htp_text"> The first time you do practice, please complete practice 1 first and then go on to practice 2. The last day (6 days after the first practice session) you only need to do practice 1.
+        The following explanation holds for both pracice 1 and 2.
+        When the practice sessions starts,
+        you will see a picture and a verb. The picture contains one or more people and their actions depict the verb.
+        The actions will be described to you in a sentence with the verb and the people in the picture.
+        Listen very carefully. A short pause follows. Next, you see another picture and another verb.
+        This time, you will have to describe it yourself using the given verb and people in the picture.
+        To describe the picture, you have to click on the microphone and then you can start speaking.
+        Your voice will be detected automatically. This exercise of listening and speaking repeats 20 times.</string>
     <string name="int_trans">int_trans</string>
     <string name="date_completed">date_completed</string>
     <string name="baseline_toggle">baseline_toggle</string>
@@ -70,14 +79,8 @@
     <string name="settings">Here you can change the settings</string>
     <string name="you_are_done">You are done. Good job!</string>
     <string name="practiceStartMessage">Start your practice here </string>
-    <string name="first_you_will_see_a_picture_and_a_verb_the_picture_will_be_described_to_you_by_using_the_given_verb_listen_very_carefully_a_short_pause_will_follow_next_you_see_another_picture_and_another_verb_this_time_you_will_have_to_describe_it_yourself_using_the_given_verb_to_describe_the_picture_you_have_to_click_on_the_loudspeaker_and_then_you_can_start_speaking_your_voice_will_be_detected_automatically">
-        When the practice starts,
-        you will see a picture and a verb. The picture contains one or more people and their actions depict the verb.
-        The actions will be described to you in a sentence with the verb and the people in the picture.
-        Listen very carefully. A short pause follows. Next, you see another picture and another verb.
-        This time, you will have to describe it yourself using the given verb and people in the picture.
-        To describe the picture, you have to click on the microphone and then you can start speaking.
-        Your voice will be detected automatically. This exercise of listening and speaking repeats 20 times.</string>
+
+
     <string name="homebuttonhouse">HomeButtonHouse</string>
     <string name="title_activity_example_practice">example_practice</string>
     <!-- Strings used for fragments for navigation -->
@@ -128,7 +131,9 @@ Cognitive ageing represents how the functioning of the brain declines in terms o
     <string name="go_to_practice_with_examples">Go to practice with examples</string>
     <string name="practice_with_example_sound_check">practice with example</string>
     <string name="volume_check">Volume check</string>
-    <string name="you_completed_the_practice_without_examples_please_practice_with_examples_now">You completed the practice without examples. Please practice with examples now.</string>
+    <string name="you_completed_the_practice_without_examples_please_practice_with_examples_now">You completed practice session 1. Please complete practice session 2 now.</string>
     <string name="title_activity_baseline_end_screen1">BaselineEndScreen1</string>
+    <string name="you_are_dooing_great">You are doing great!</string>
+    <string name="example_describing_picture">Example of describing picture</string>
 
 </resources>
