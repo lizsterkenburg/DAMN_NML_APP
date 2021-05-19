@@ -52,6 +52,7 @@ public class DataStorer {
                 StringBuilder stringBuilder = new StringBuilder();
 
                 while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    System.out.println(receiveString);
                     stringBuilder.append("\n").append(receiveString);
                 }
 

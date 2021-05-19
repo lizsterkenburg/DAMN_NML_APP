@@ -106,8 +106,7 @@
     <string name="text_1">Text 1</string>
     <string name="hiding_button">Hiding Button</string>
     <string name="dissapearing_text">Dissapearing text</string>
-    <string name="explanation_aging">About cognitive ageing
-Cognitive ageing represents how the functioning of the brain declines in terms of language, concentration, intelligence, and memory. This process starts earlier than you think. From the age of 25 you can start to notice the effects of cognitive aging. But do not panic! By stimulating your language use, you can slow down this process. Thanks to the DAMN app you can easily de-age yourself.</string>
+    <string name="explanation_aging">Cognitive ageing represents how the functioning of the brain declines in terms of language, concentration, intelligence, and memory. This process starts earlier than you think. From the age of 25 you can start to notice the effects of cognitive aging. But do not panic! By stimulating your language use, you can slow down this process. Thanks to the DAMN app you can easily de-age yourself.</string>
     <string name="question_aging"> What is cognitive aging? </string>
     <string name="title_activity_example_practice2">Example_practice2</string>
     <string name="title_activity_sound_check">Sound_check</string>
