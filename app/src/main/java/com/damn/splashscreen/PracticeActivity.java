@@ -96,7 +96,7 @@ public class PracticeActivity extends LinkingFunctions {
                         break;
 
                     case MotionEvent.ACTION_DOWN:
-                        if (checkPermission()){
+                        if (!checkPermission()){
                             Toast.makeText(getApplicationContext(),"Not all permission have been granted, please allow the use of the microphone in your phone settings",Toast.LENGTH_LONG).show();
                         } else {
                             emptyBackground.setBackground(ContextCompat.getDrawable(context, R.drawable.colored_background));
