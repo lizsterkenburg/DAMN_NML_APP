@@ -1,13 +1,17 @@
 package com.damn.splashscreen;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -15,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -53,6 +58,7 @@ public class PracticeActivity extends LinkingFunctions {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_practice_speak);
+
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         test = (ImageView) findViewById(R.id.imageView_show_test);
@@ -90,6 +96,9 @@ public class PracticeActivity extends LinkingFunctions {
                         break;
 
                     case MotionEvent.ACTION_DOWN:
+                        if (!checkPermission()){
+                            Toast.makeText(getApplicationContext(),"Not all permission have been granted, please allow the use of the microphone in your phone settings",Toast.LENGTH_LONG).show();
+                        }
                         emptyBackground.setBackground(ContextCompat.getDrawable(context, R.drawable.colored_background));
                         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -373,6 +382,17 @@ public class PracticeActivity extends LinkingFunctions {
         Intent i = new Intent(this, SettingsActivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+    private boolean checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)||
+                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)||
+                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) ||
+                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED)||
+                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED)) {
+                return false;
+            }
+        }
     }
 
 }
