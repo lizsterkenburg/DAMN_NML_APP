@@ -30,7 +30,7 @@ public class SendMail {
 
     public void sendMail(String filePath, String name, Context context) {
         final String username = "damn.experiment";
-        final String password = "NMLgroup4";
+        final String password = "Alfaspider4#";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

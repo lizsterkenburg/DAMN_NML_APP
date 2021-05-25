@@ -54,7 +54,7 @@
     <string name="question_1"> How many exercises do I have to do every day? </string>
     <string name="answer_1">On day 1 you have to do practice 1 and 2. 6 days after the first practice you should do practice one. Practice 1 consists of 40 exercises and practice 2 of 52. </string>
     <string name="question_2">What happens when I forget to practice after 6 days?</string>
-    <string name="answer_2">We prefer you practice every day, but if you miss one day that is okay. Just continue practising again tomorrow."</string>
+    <string name="answer_2">If it has been longer than this then unfortunately your data cannot be used for the purposes of this experiment.</string>
 
     <string name="question_3">Do I need internet to use this app?</string>
     <string name="answer_3">You need an internet connection to use this app. So please only practice when you have a WiFi or mobile data connection.</string>
