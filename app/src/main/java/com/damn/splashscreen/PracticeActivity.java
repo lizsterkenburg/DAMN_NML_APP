@@ -96,15 +96,16 @@ public class PracticeActivity extends LinkingFunctions {
                         break;
 
                     case MotionEvent.ACTION_DOWN:
-                        if (!checkPermission()){
+                        if (checkPermission()){
                             Toast.makeText(getApplicationContext(),"Not all permission have been granted, please allow the use of the microphone in your phone settings",Toast.LENGTH_LONG).show();
+                        } else {
+                            emptyBackground.setBackground(ContextCompat.getDrawable(context, R.drawable.colored_background));
+                            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+                            mSpeechRecognizer.startListening(intent);
+                            break;
                         }
-                        emptyBackground.setBackground(ContextCompat.getDrawable(context, R.drawable.colored_background));
-                        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-                        mSpeechRecognizer.startListening(intent);
-                        break;
                 }
                 return false;
             }
@@ -393,6 +394,7 @@ public class PracticeActivity extends LinkingFunctions {
                 return false;
             }
         }
+        return true;
     }
 
 }
