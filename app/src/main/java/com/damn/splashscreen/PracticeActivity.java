@@ -96,16 +96,15 @@ public class PracticeActivity extends LinkingFunctions {
                         break;
 
                     case MotionEvent.ACTION_DOWN:
-                        if (!checkPermission()){
-                            Toast.makeText(getApplicationContext(),"Not all permission have been granted, please allow the use of the microphone in your phone settings",Toast.LENGTH_LONG).show();
-                        } else {
-                            emptyBackground.setBackground(ContextCompat.getDrawable(context, R.drawable.colored_background));
-                            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-                            mSpeechRecognizer.startListening(intent);
-                            break;
+                        if (!checkPermission()) {
+                            Toast.makeText(getApplicationContext(), "Not all permission have been granted, please allow the use of the microphone in your phone settings", Toast.LENGTH_LONG).show();
                         }
+                        emptyBackground.setBackground(ContextCompat.getDrawable(context, R.drawable.colored_background));
+                        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+                        mSpeechRecognizer.startListening(intent);
+                        break;
                 }
                 return false;
             }
@@ -114,14 +113,14 @@ public class PracticeActivity extends LinkingFunctions {
         // randomly select audio and corresponding image
 
         String soundName = "";
-        if(sharedPref.getString(getString(R.string.which_practice), "null").equals("baseline") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
+        if (sharedPref.getString(getString(R.string.which_practice), "null").equals("baseline") || sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
             if (Math.random() > 0.5) {
                 soundName = getSound("active");
             } else {
                 soundName = getSound("passive");
             }
         } else {
-            if (sharedPref.getString(getString(R.string.int_trans),"null").equals("int")) {
+            if (sharedPref.getString(getString(R.string.int_trans), "null").equals("int")) {
                 soundName = getSound("int");
             } else {
                 if (Math.random() > 0.5) {
@@ -186,7 +185,7 @@ public class PracticeActivity extends LinkingFunctions {
             DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
             DateTimeFormatter date2 = DateTimeFormatter.ofPattern("HH:mm:ss ; yyyy/MM/dd ; ");
 
-            String filename = "Results analysis on " + sharedPref.getString(getString(R.string.which_practice),"null") + " " + date.format(now);
+            String filename = "Results analysis on " + sharedPref.getString(getString(R.string.which_practice), "null") + " " + date.format(now);
             if (sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
                 filename = "example";
             }
@@ -212,12 +211,12 @@ public class PracticeActivity extends LinkingFunctions {
                     } else { //if not practice then its baseline
                         LocalDateTime now_completed = LocalDateTime.now();
                         DateTimeFormatter date_completed = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
-                        System.out.println("\n\n SHAREDPREF: " + sharedPref.getString(getString(R.string.date_completed),"null"));
+                        System.out.println("\n\n SHAREDPREF: " + sharedPref.getString(getString(R.string.date_completed), "null"));
                         if (sharedPref.getString(getString(R.string.date_completed), "null").equals("null")) {
                             editor.putString(getString(R.string.date_completed), date_completed.format(now_completed));
                             editor.apply();
-                            System.out.println("\n\n setting the SHAREDPREF: " );
-                            System.out.println("\n\n SHAREDPREF is now: " + sharedPref.getString(getString(R.string.date_completed),"null"));
+                            System.out.println("\n\n setting the SHAREDPREF: ");
+                            System.out.println("\n\n SHAREDPREF is now: " + sharedPref.getString(getString(R.string.date_completed), "null"));
 
 
                         } else {
@@ -233,7 +232,7 @@ public class PracticeActivity extends LinkingFunctions {
                             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                             //}
                         }
-                        if(amIDone.equals("no")){
+                        if (amIDone.equals("no")) {
                             System.out.println("in the other page setting. only do this first time pls");
 
                             Intent i = new Intent(context, BaselineEndScreen1.class);//Example_practice3.class);
@@ -260,6 +259,7 @@ public class PracticeActivity extends LinkingFunctions {
                 }, 1000);
             }
         }
+
         public void onPartialResults(Bundle partialResults) {
 
         }
@@ -356,7 +356,7 @@ public class PracticeActivity extends LinkingFunctions {
                 }
             }
         }
-        if (!(toRemove.size() == resource_names.size())){
+        if (!(toRemove.size() == resource_names.size())) {
             resource_names.removeAll(toRemove);
         }
         System.out.println(resource_names);
@@ -384,12 +384,13 @@ public class PracticeActivity extends LinkingFunctions {
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
+
     private boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)||
-                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)||
+            if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) ||
+                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) ||
                     !(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) ||
-                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED)||
+                    !(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) ||
                     !(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED)) {
                 return false;
             }
