@@ -16,7 +16,9 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import java.util.Calendar;
@@ -49,18 +51,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         setAlarm();
-        handler = new Handler();
-        handler.postDelayed(() -> {
-            if(!sharedPref.getString(getString(R.string.user_ID),"not submitted").equals("not submitted") ) {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
-            else {
-                startActivity(new Intent(SplashActivity.this, ID_check.class));
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
 
-        }, 2500);
     }
     @Override
     public void onBackPressed() {
@@ -78,11 +69,34 @@ public class SplashActivity extends AppCompatActivity {
                     !(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) ||
                     !(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED)||
                     !(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED)) {
-                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.parse("package:" + getPackageName()));
-                startActivity(intent);
-                finish();
+                ActivityCompat.requestPermissions(this, new String[] {
+                        Manifest.permission.RECORD_AUDIO,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,},1);
             }
+            else {
+                handler = new Handler();
+                handler.postDelayed(() -> {
+                    if(!sharedPref.getString(getString(R.string.user_ID),"not submitted").equals("not submitted") ) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    }
+                    else {
+                        startActivity(new Intent(SplashActivity.this, ID_check.class));
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    }
+
+                }, 2500);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+            checkPermission();
+
+        } else {
+            checkPermission();
         }
     }
 
