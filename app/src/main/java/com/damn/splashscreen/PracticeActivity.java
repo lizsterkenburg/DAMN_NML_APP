@@ -220,7 +220,7 @@ public class PracticeActivity extends LinkingFunctions {
                             String[] last_date = sharedPref.getString(getString(R.string.date_completed), "null").split("-");
                             String[] current_data = date_completed.format(now_completed).split("-");
 
-                            System.out.println("in the else, gonna set porlific code");
+                            System.out.println("in the else, gonna set prolific code");
 
                             //if ((Integer.parseUnsignedInt(current_data[2]) - Integer.parseUnsignedInt(last_date[2])) == 0) {
                             amIDone = "yes";

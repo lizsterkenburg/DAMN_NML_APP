@@ -84,6 +84,21 @@
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7" />
 
+        <Button
+            android:id="@+id/mail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="send your results"
+            android:textSize="22sp"
+            android:padding="10dp"
+            android:background="@drawable/colored_background"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_7"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_6" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_left"
             android:layout_width="wrap_content"
