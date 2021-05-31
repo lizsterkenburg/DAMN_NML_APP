@@ -83,11 +83,6 @@ public class LinkingFunctions extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 
-    public void toFirstTimePractice(View v){
-        Intent i =  new Intent(this,Example_practice3.class);
-        startActivity(i);
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-    }
 
 
 
