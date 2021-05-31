@@ -18,8 +18,8 @@ public class Sound_check extends LinkingFunctions {
     private Button baselineButton;
     private Button practiceButton;
     private SharedPreferences sharedPref;
-    private final int NUMBER_OF_PRACTICES_BASELINE = 2;
-    private final int NUMBER_OF_PRACTICES_PRACTICE = 2;
+    private final int NUMBER_OF_PRACTICES_BASELINE = 3; //21
+    private final int NUMBER_OF_PRACTICES_PRACTICE = 3; //53
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class Sound_check extends LinkingFunctions {
         practiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putInt(getString(R.string.exercise_number), 1);
                 editor.putStringSet(getString(R.string.used_names), null);
                 editor.putString(getString(R.string.which_practice), "practice");
                 editor.putInt(getString(R.string.number_of_practices), NUMBER_OF_PRACTICES_PRACTICE);
@@ -64,6 +65,7 @@ public class Sound_check extends LinkingFunctions {
         baselineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putInt(getString(R.string.exercise_number), 1);
                 editor.putStringSet(getString(R.string.used_names), null);
                 editor.putString(getString(R.string.which_practice), "baseline");
                 editor.putInt(getString(R.string.number_of_practices), NUMBER_OF_PRACTICES_BASELINE);
