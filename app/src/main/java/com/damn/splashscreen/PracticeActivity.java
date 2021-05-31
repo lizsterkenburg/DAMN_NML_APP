@@ -44,7 +44,6 @@ public class PracticeActivity extends LinkingFunctions {
     private TextView verbText;
     private TextView emptyBackground;
     private Context context;
-    private SendMail sendMail;
     private Handler handler;
     private SpeechRecognizer mSpeechRecognizer;
     private SharedPreferences sharedPref;
@@ -65,7 +64,6 @@ public class PracticeActivity extends LinkingFunctions {
         dataStorer = new DataStorer();
         verbText = findViewById(R.id.verb_test);
         emptyBackground = findViewById(R.id.emptyTextForBackground);
-        sendMail = new SendMail();
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         mSpeechRecognizer.setRecognitionListener(new recListener());
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
@@ -129,7 +127,7 @@ public class PracticeActivity extends LinkingFunctions {
         System.out.println("practice " + soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
-        String verb_text = "Verb: to " + verb + "\n" +"Progress: "+ sharedPref.getInt(getString(R.string.exercise_number),0)+ " - " + sharedPref.getInt(getString(R.string.number_of_practices),0);
+        String verb_text = "Verb: to " + verb + "\n" +"Progress: "+ sharedPref.getInt(getString(R.string.exercise_number),0)+ " - " + (sharedPref.getInt(getString(R.string.number_of_practices),0) -1);
         verbText.setText(verb_text);
         String[] verbArray = {verb};
         String[] emptyArray = {};

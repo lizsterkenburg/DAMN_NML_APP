@@ -68,7 +68,7 @@ public class PrimeActivity extends LinkingFunctions {
         System.out.println(soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
-        String verb_text = "Verb: to " + verb + "\n" +"Progress: "+ sharedPref.getInt(getString(R.string.exercise_number),0)+ " - " + sharedPref.getInt(getString(R.string.number_of_practices),0);
+        String verb_text = "Verb: to " + verb + "\n" +"Progress: "+ sharedPref.getInt(getString(R.string.exercise_number),0)+ " - " + (sharedPref.getInt(getString(R.string.number_of_practices),0) -1);
         verbPrime.setText(verb_text);
         prime.setImageDrawable(getImage(soundName));
         String[] verbArray = {verb};
