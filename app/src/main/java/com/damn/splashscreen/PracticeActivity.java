@@ -62,7 +62,6 @@ public class PracticeActivity extends LinkingFunctions {
         context = getApplicationContext();
         speechButton = (ImageView) findViewById(R.id.button);
         test = (ImageView) findViewById(R.id.imageView_show_test);
-//        speechText = (EditText) findViewById(R.id.editText);
         dataStorer = new DataStorer();
         verbText = findViewById(R.id.verb_test);
         emptyBackground = findViewById(R.id.emptyTextForBackground);
@@ -199,45 +198,10 @@ public class PracticeActivity extends LinkingFunctions {
             System.out.println(counter);
             if (counter % sharedPref.getInt(getString(R.string.number_of_practices), 3) == 0) {
                 if (!sharedPref.getString(getString(R.string.which_practice), "null").equals("example")) {
-                    System.out.println(context.getFileStreamPath(filename));
-                    sendMail.sendMail(context.getFileStreamPath(filename).toString(), filename, getApplicationContext());
-                    if (sharedPref.getString(getString(R.string.which_practice), "null").equals("practice")) {
-                        Intent i = new Intent(context, Example_practice3.class);
-                        startActivity(i);
-                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    } else { //if not practice then its baseline
-                        LocalDateTime now_completed = LocalDateTime.now();
-                        DateTimeFormatter date_completed = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
-                        System.out.println("\n\n SHAREDPREF: " + sharedPref.getString(getString(R.string.date_completed), "null"));
-                        if (sharedPref.getString(getString(R.string.date_completed), "null").equals("null")) {
-                            editor.putString(getString(R.string.date_completed), date_completed.format(now_completed));
-                            editor.apply();
-                            System.out.println("\n\n setting the SHAREDPREF: ");
-                            System.out.println("\n\n SHAREDPREF is now: " + sharedPref.getString(getString(R.string.date_completed), "null"));
+                    Intent i = new Intent(context, PracticeDone.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
-
-                        } else {
-                            String[] last_date = sharedPref.getString(getString(R.string.date_completed), "null").split("-");
-                            String[] current_data = date_completed.format(now_completed).split("-");
-
-                            System.out.println("in the else, gonna set prolific code");
-
-                            //if ((Integer.parseUnsignedInt(current_data[2]) - Integer.parseUnsignedInt(last_date[2])) == 0) {
-                            amIDone = "yes";
-                            Intent i = new Intent(context, PracticeDone.class);
-                            startActivity(i);
-                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                            //}
-                        }
-                        if (amIDone.equals("no")) {
-                            System.out.println("in the other page setting. only do this first time pls");
-
-                            Intent i = new Intent(context, BaselineEndScreen1.class);//Example_practice3.class);
-                            startActivity(i);
-                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                        }
-
-                    }
                 } else {
                     Intent i = new Intent(context, MainActivity.class);
                     startActivity(i);
@@ -264,6 +228,7 @@ public class PracticeActivity extends LinkingFunctions {
         public void onEvent(int eventType, Bundle params) {
 
         }
+
     }
 
 

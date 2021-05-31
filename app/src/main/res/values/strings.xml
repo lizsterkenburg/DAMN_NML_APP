@@ -1,6 +1,8 @@
 <resources>
-    <string name="htp_text"> The first time you do practice, please complete practice 1 first and then go on to practice 2. The last day (6 days after the first practice session) you only need to do practice 1.
-        The following explanation holds for both pracice 1 and 2.
+    <string name="htp_text"> The first time you do practice, please complete practice 1 first and then go on to practice 2.
+        The last day (6 days after the first practice session) you only need to do practice 1.
+        Please make sure to send the results after the session!
+        The following explanation holds for both practice 1 and 2.
         When the practice sessions starts,
         you will see a picture and a verb. The picture contains one or more people and their actions depict the verb.
         The actions will be described to you in a sentence with the verb and the people in the picture.
@@ -120,12 +122,12 @@
     <string name="placeholder_ex_prac">Placeholder for actual example pratcie of a few rounds</string>
     <string name="hint">TextView</string>
     <string name="hintProlific">Fill in Prolific User ID</string>
-    <string name="id_explanation">Please enter your prolific user ID below before starting your practice.</string>
+    <string name="id_explanation">Please enter your first and last name below before starting your practice.</string>
     <string name="username">Username:</string>
     <string name="title_activity_i_d_check">ID_check</string>
     <string name="practice_without_example">Practice 1</string>
     <string name="practice_with_example">practice_with_example</string>
-    <string name="message_baseline_done">You completed the exercises. Please remember to do the exercise without examples 6 days from now.</string>
+    <string name="message_baseline_done"> On day one, please do practice 1 followed by practice 2. Six days later, please repeat practice 1. After each practice, please send us the results.</string>
     <string name="questions_go_to_help_here">Questions? go to help here</string>
     <string name="go_to_practice_with_examples">Go to practice with examples</string>
     <string name="practice_with_example_sound_check">Practice 2</string>

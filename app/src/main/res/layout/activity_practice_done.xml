@@ -60,7 +60,7 @@
             android:layout_height="0dp"
             android:background="@drawable/bg_completed"
             android:gravity="center"
-            android:text="@string/password_prolific"
+            android:text="@string/message_baseline_done"
             android:textSize="22sp"
             android:autoSizeMaxTextSize="22sp"
             android:autoSizeMinTextSize="10sp"
@@ -72,6 +72,20 @@
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_3"/>
 
+            <Button
+                android:id="@+id/mail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="send your results"
+                android:textSize="22sp"
+                android:padding="10dp"
+                android:background="@drawable/colored_background"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
 
             <Button
                 android:id="@+id/goToQuestions"
@@ -83,11 +97,11 @@
 
                 android:background="@drawable/colored_background"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
-                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7" />
 
 
 
@@ -158,6 +172,22 @@
             app:layout_constraintGuide_percent="0.65"
             app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_5" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_8"
+            app:layout_constraintGuide_percent="0.82"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.97"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_7" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal_bottom_toolbar"
             android:layout_width="wrap_content"
