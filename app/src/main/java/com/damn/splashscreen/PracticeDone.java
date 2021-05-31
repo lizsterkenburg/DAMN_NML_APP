@@ -104,7 +104,7 @@ public class PracticeDone extends  LinkingFunctions  {
             e.printStackTrace();
         }
 
-
+        file.delete();
         Uri uri = Uri.fromFile(tempFile);
         return uri;
     }

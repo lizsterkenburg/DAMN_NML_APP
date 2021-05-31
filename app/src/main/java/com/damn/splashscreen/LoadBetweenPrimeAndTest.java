@@ -1,5 +1,6 @@
 package com.damn.splashscreen;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,7 @@ public class LoadBetweenPrimeAndTest extends AppCompatActivity {
 
     private Handler handler;
     private SharedPreferences sharedPref;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,8 @@ public class LoadBetweenPrimeAndTest extends AppCompatActivity {
             startActivity(new Intent(LoadBetweenPrimeAndTest.this, PracticeActivity.class));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }, 1500 + (int)(Math.random() * 500));
+
+
     }
 
     @Override

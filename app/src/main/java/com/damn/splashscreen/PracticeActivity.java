@@ -129,7 +129,7 @@ public class PracticeActivity extends LinkingFunctions {
         System.out.println("practice " + soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
-        String verb_text = "Verb: to " + verb;
+        String verb_text = "Verb: to " + verb + "\n" +"Progress: "+ sharedPref.getInt(getString(R.string.exercise_number),0)+ " - " + sharedPref.getInt(getString(R.string.number_of_practices),0);
         verbText.setText(verb_text);
         String[] verbArray = {verb};
         String[] emptyArray = {};
@@ -172,9 +172,12 @@ public class PracticeActivity extends LinkingFunctions {
 
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void onResults(Bundle bundle) {
+            int excercise_counter = sharedPref.getInt(getString(R.string.exercise_number),0) + 1;
+            editor.putInt(getString(R.string.exercise_number), excercise_counter);
+            editor.apply();
             //getting all the matches
             ArrayList<String> matches = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-            String amIDone = "no";
+
 
             // actual code
             LocalDateTime now = LocalDateTime.now();
