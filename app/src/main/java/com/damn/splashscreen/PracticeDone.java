@@ -26,12 +26,16 @@ public class PracticeDone extends  LinkingFunctions  {
     private String exerciseComplete = "";
     private String exerciseIncomplete = "";
     private SharedPreferences sharedPref;
+    private DataStorer dataStorer;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_done);
         MainActivity.exerciseDone = true;
+
+
         sharedPref = this.getSharedPreferences(getString(R.string.notifaction), Context.MODE_PRIVATE);
         Context context = getApplicationContext();
         ImageView logoView = findViewById(R.id.doneLogo);
@@ -43,6 +47,7 @@ public class PracticeDone extends  LinkingFunctions  {
             Drawable myDrawable = getResources().getDrawable(R.drawable.green_owl_no_text);
             logoView.setImageDrawable(myDrawable);
         }
+        dataStorer = new DataStorer();
 
         String logo = sharedPref.getString(context.getString(R.string.which_practice),"none"); //true = logo, false = owl
         String logoName = "";
@@ -54,25 +59,33 @@ public class PracticeDone extends  LinkingFunctions  {
 
         String user = sharedPref.getString(context.getString(R.string.user_ID),"not submitted");
         String sessionType = sharedPref.getString(context.getString(R.string.which_practice), "null");
-        String messageId = "Sent from DAMN App by " + user + " - Logo = " + logoName + " - session = "+ sessionType;
+        String messageId = "Sent by " + user + " - Logo = " + logoName + " - session = "+ sessionType;
+
+        String messageSubject = user + ": Logo " + logoName + " - session " + sessionType;
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
         String filename = "Results analysis on " + sharedPref.getString(getString(R.string.which_practice), "null") + " " + date.format(now);
 
         Uri uri = getUri(context, filename);
-
+        String stringTotalMessage = dataStorer.readFromFile(context, filename);
         Button sendResults = findViewById(R.id.mail);
         sendResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("\n\nTried to send an email\n\n");
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:damn.experiment@gmail.com")); // only email apps should handle this
+                intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageSubject+"&body="+stringTotalMessage)); // only email apps should handle this
                 intent.putExtra(Intent.EXTRA_SUBJECT, messageId);
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                System.out.println("Intent 1 - " + intent);
+
+                System.out.println("Intent - " + intent.resolveActivity(getPackageManager()));
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(Intent.createChooser(intent, "Send email..."),12);
+                } else {
+                    startActivity(intent);
                 }
             }
         });

@@ -35,7 +35,7 @@ public class DataStorer {
         }
     }
 
-    private String readFromFile(Context context, String filename) {
+    public String readFromFile(Context context, String filename) {
 
         String ret = "";
 
