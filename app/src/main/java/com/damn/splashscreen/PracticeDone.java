@@ -14,6 +14,10 @@ import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -56,7 +60,7 @@ public class PracticeDone extends  LinkingFunctions  {
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
         String filename = "Results analysis on " + sharedPref.getString(getString(R.string.which_practice), "null") + " " + date.format(now);
 
-        Uri uri = Example_practice3.getUri(context, filename);
+        Uri uri = getUri(context, filename);
 
         Button sendResults = findViewById(R.id.mail);
         sendResults.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +78,36 @@ public class PracticeDone extends  LinkingFunctions  {
         });
     }
 
+    private Uri getUri(Context context, String filename){
+        String filePath = context.getFileStreamPath(filename).toString();
+
+        File file = new File(filePath);
+        File tempFile = null;
+        String tempName = filename + " - temp";
+        String tempPath = context.getExternalCacheDir()+"/"+tempName +".txt";
+        System.out.println(tempPath);
+        try {
+            tempFile = new File(context.getExternalCacheDir()+"/"+tempName +".txt");//File.createTempFile(tempName, ".txt", context.getExternalCacheDir());
+            FileWriter fw = new FileWriter(tempFile);
+
+            FileReader fr = new FileReader(file);
+            int c = fr.read();
+            while (c != -1) {
+                fw.write(c);
+                c = fr.read();
+            }
+            fr.close();
+
+            fw.flush();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Uri uri = Uri.fromFile(tempFile);
+        return uri;
+    }
 
     public void toHelp(View v){
         Intent i = new Intent(this, HelpActivity.class);
