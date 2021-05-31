@@ -73,18 +73,17 @@ public class PracticeDone extends  LinkingFunctions  {
         sendResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("\n\nTried to send an email\n\n");
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageSubject+"&body="+stringTotalMessage)); // only email apps should handle this
-                intent.putExtra(Intent.EXTRA_SUBJECT, messageId);
-                intent.putExtra(Intent.EXTRA_STREAM, uri);
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                System.out.println("Intent 1 - " + intent);
 
-                System.out.println("Intent - " + intent.resolveActivity(getPackageManager()));
                 if (intent.resolveActivity(getPackageManager()) != null) {
+                    intent.setData(Uri.parse("mailto:damn.experiment@gmail.com")); // only email apps should handle this
+                    intent.putExtra(Intent.EXTRA_SUBJECT, messageId);
+                    intent.putExtra(Intent.EXTRA_STREAM, uri);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     startActivityForResult(Intent.createChooser(intent, "Send email..."),12);
                 } else {
+
+                    intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageSubject+"&body="+stringTotalMessage)); // only email apps should handle this
                     startActivity(intent);
                 }
             }
