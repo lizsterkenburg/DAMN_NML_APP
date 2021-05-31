@@ -18,8 +18,8 @@ public class Sound_check extends LinkingFunctions {
     private Button baselineButton;
     private Button practiceButton;
     private SharedPreferences sharedPref;
-    private final int NUMBER_OF_PRACTICES_BASELINE = 3; //21
-    private final int NUMBER_OF_PRACTICES_PRACTICE = 3; //53
+    private final int NUMBER_OF_PRACTICES_BASELINE = 21; //21
+    private final int NUMBER_OF_PRACTICES_PRACTICE = 53; //53
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

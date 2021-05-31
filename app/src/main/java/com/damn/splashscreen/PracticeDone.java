@@ -59,15 +59,16 @@ public class PracticeDone extends  LinkingFunctions  {
 
         String user = sharedPref.getString(context.getString(R.string.user_ID),"not submitted");
         String sessionType = sharedPref.getString(context.getString(R.string.which_practice), "null");
-        String messageId = "Sent by " + user + " - Logo = " + logoName + " - session = "+ sessionType;
+        String messageId = "Sent from DAMN App by " + user + " - Logo = " + logoName + " - session = "+ sessionType;
 
-        String messageSubject = user + ": Logo " + logoName + " - session " + sessionType;
+//        String messageSubject = user + ": Logo " + logoName + " - session " + sessionType;
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter date = DateTimeFormatter.ofPattern(" yyyy-MM-dd ");
         String filename = "Results analysis on " + sharedPref.getString(getString(R.string.which_practice), "null") + " " + date.format(now);
 
         Uri uri = getUri(context, filename);
+        System.out.println("uri: " + uri);
         String stringTotalMessage = dataStorer.readFromFile(context, filename);
         Button sendResults = findViewById(R.id.mail);
         sendResults.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,7 @@ public class PracticeDone extends  LinkingFunctions  {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
 
-                if (intent.resolveActivity(getPackageManager()) != null) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                     intent.setData(Uri.parse("mailto:damn.experiment@gmail.com")); // only email apps should handle this
                     intent.putExtra(Intent.EXTRA_SUBJECT, messageId);
                     intent.putExtra(Intent.EXTRA_STREAM, uri);
@@ -83,9 +84,11 @@ public class PracticeDone extends  LinkingFunctions  {
                     startActivityForResult(Intent.createChooser(intent, "Send email..."),12);
                 } else {
 
-                    intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageSubject+"&body="+stringTotalMessage)); // only email apps should handle this
+                    intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageId+"&body="+stringTotalMessage)); // only email apps should handle this
                     startActivity(intent);
                 }
+                String filePath = context.getFileStreamPath(filename).toString();
+                File file = new File(filePath);
             }
         });
     }
@@ -95,7 +98,7 @@ public class PracticeDone extends  LinkingFunctions  {
 
         File file = new File(filePath);
         File tempFile = null;
-        String tempName = filename + " - temp";
+        String tempName = filename + "- temp";
         String tempPath = context.getExternalCacheDir()+"/"+tempName +".txt";
         System.out.println(tempPath);
         try {
@@ -116,8 +119,9 @@ public class PracticeDone extends  LinkingFunctions  {
             e.printStackTrace();
         }
 
-        file.delete();
+
         Uri uri = Uri.fromFile(tempFile);
+
         return uri;
     }
 
