@@ -77,6 +77,7 @@ data = ['Date',	'Time',	'Sentence',	'Voice']
 df = pd.DataFrame(columns=data)
 for i in input_text:
     sentence_array = i.split(";")
+    print(sentence_array)
     sentence = sentence_array[2]
     voice2(sentence)
     voiceResult = voice2(sentence)
@@ -87,4 +88,6 @@ print(df)
 time = datetime.datetime.now()
 time_formatted = time.strftime('%m-%d-%Y - Hour-%H-Min-%M Sec-%S')
 
-df.to_csv('./' + '\DAMN Analysis Result on ' + time_formatted  + '.csv', index = False)
+filename_2 = filename.split(".")[0]
+print(filename_2)
+df.to_csv('./' + '\ ' + filename_2 + '.csv', index = False)
