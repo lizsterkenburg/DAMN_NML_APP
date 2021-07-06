@@ -84,9 +84,10 @@ public class PracticeDone extends  LinkingFunctions  {
                     startActivityForResult(Intent.createChooser(intent, "Send email..."),12);
                 } else {
 
-                    intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageId+"&body="+stringTotalMessage)); // only email apps should handle this
+                    intent.setData(Uri.parse("mailto:damn.experiment@gmail.com?subject="+messageId+"&body="+messageId+"\n"+stringTotalMessage)); // only email apps should handle this
                     startActivity(intent);
                 }
+
                 String filePath = context.getFileStreamPath(filename).toString();
                 File file = new File(filePath);
             }
