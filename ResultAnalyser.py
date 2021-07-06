@@ -45,14 +45,16 @@ print("\n path = ", path + "\n filename = " + filename + "\n")
 
 input_text = open(os.path.join(path, filename), "r")
 
-data = ['Date',	'Time',	'Sentence',	'Voice']
+data = ['User', 'Session', 'Verb', 'Date',	'Time',	'Sentence',	'Voice']
 
 df = pd.DataFrame(columns=data)
+print(input_text, "inpuuuuuut")
 for i in input_text:
+    print("IM I", i)
     sentence_array = i.split(";")
     sentence = sentence_array[2]
     voiceResult = voice(sentence)
-    data = {"Date": str(sentence_array[1]), "Time": str(sentence_array[0]), "Sentence": sentence_array[2].strip("\n"), "Voice": voiceResult}
+    data = {"Date": str(sentence_array[1]), "Time": str(sentence_array[0]), "Sentence": sentence_array[2].strip("\n"), "User": str(sentence_array[3]), "Session": str(sentence_array[4]), "Verb": str(sentence_array[5]),   "Voice": voiceResult}
     df = df.append(data, ignore_index=True)
 print(df)
 
