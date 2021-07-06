@@ -63,7 +63,9 @@ public class MainActivity extends LinkingFunctions {
 
         int counter = 0;
         try {
-            counter = dataStorer.writeFile(filename, "-1", getApplicationContext());
+            String userName = sharedPref.getString(getString(R.string.user_ID),"null");
+            String sessionType = sharedPref.getString(getString(R.string.which_practice), "null");
+            counter = dataStorer.writeFile(filename, "-1", userName,sessionType,"null", getApplicationContext());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -12,11 +12,11 @@ import java.io.OutputStreamWriter;
 public class DataStorer {
 
 
-    public int writeFile(String fileName, String message, Context context) throws IOException {
+    public int writeFile(String fileName, String message, String ID, String sessionType, String photoName, Context context) throws IOException {
         try {
             if (!message.equals( "-1")) {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_APPEND));
-                outputStreamWriter.append(message + "\n");
+                outputStreamWriter.append(message + " ; " + ID + " ; " + sessionType+ " ; " + photoName + "\n");
                 outputStreamWriter.close();
             }
 

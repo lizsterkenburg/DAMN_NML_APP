@@ -17,6 +17,7 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class PracticeActivity extends LinkingFunctions {
     private SpeechRecognizer mSpeechRecognizer;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
+    private String verb1;
 
     private static final int I = 1;
 
@@ -127,6 +129,7 @@ public class PracticeActivity extends LinkingFunctions {
         System.out.println("practice " + soundName);
         String[] words = soundName.split("_");
         String verb = words[1];
+        verb1 = verb;
         String verb_text = "Verb: to " + verb + "\n" +"Progress: "+ sharedPref.getInt(getString(R.string.exercise_number),0)+ " - " + (sharedPref.getInt(getString(R.string.number_of_practices),0) -1);
         verbText.setText(verb_text);
         String[] verbArray = {verb};
@@ -189,7 +192,12 @@ public class PracticeActivity extends LinkingFunctions {
             String message = date2.format(now) + matches.get(0).toString();
             int counter = 0;
             try {
-                counter = dataStorer.writeFile(filename, message, context);
+                String userName = sharedPref.getString(getString(R.string.user_ID),"null");
+                String sessionType = sharedPref.getString(getString(R.string.which_practice), "null");
+
+                String photoName = verb1;
+                //    writeFile(String fileName, String message, String ID, String photoName, Context context
+                counter = dataStorer.writeFile(filename, message, userName, sessionType, photoName, context);
             } catch (IOException e) {
                 e.printStackTrace();
             }
